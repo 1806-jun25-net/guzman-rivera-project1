@@ -702,11 +702,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\PitzzaPalace.csproj",
-      "projectName": "PitzzaPalace",
-      "projectPath": "C:\\Revature\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\PitzzaPalace.csproj",
+      "projectUniqueName": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\PitzzaPalace.interface.csproj",
+      "projectName": "PitzzaPalace.interface",
+      "projectPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\PitzzaPalace.interface.csproj",
       "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\obj\\",
+      "outputPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\PitzzaPalace.Library\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -725,8 +725,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Revature\\Project1-PitzzaPalace.Library\\ClassLibrary1\\PitzzaPalace.Library.csproj": {
-              "projectPath": "C:\\Revature\\Project1-PitzzaPalace.Library\\ClassLibrary1\\PitzzaPalace.Library.csproj"
+            "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\ClassLibrary1\\PitzzaPalace.Library.csproj": {
+              "projectPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\ClassLibrary1\\PitzzaPalace.Library.csproj"
             }
           }
         }

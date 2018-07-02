@@ -1,0 +1,14 @@
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.interface.deps.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.interface.runtimeconfig.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.interface.runtimeconfig.dev.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.interface.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.interface.pdb
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\ClassLibrary1.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\ClassLibrary1.pdb
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.csprojAssemblyReference.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.csproj.CoreCompileInputs.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.AssemblyInfoInputs.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.AssemblyInfo.cs
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.csproj.CopyComplete
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.interface.pdb

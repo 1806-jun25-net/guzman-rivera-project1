@@ -18,7 +18,7 @@ namespace ClassLibrary1
         string Sausage { get; set; }
         string Bacon { get; set; }
         string Onions { get; set; }
-        string Chiken { get; set; }
+        string Chicken { get; set; }
         string RegularSauce { get; set; }
         string BarbecueSauce { get; set; }
 

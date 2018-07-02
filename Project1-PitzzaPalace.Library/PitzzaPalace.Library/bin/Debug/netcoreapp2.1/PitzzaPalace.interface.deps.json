@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "PitzzaPalace.interface/1.0.0": {
+        "dependencies": {
+          "PitzzaPalace.Library": "1.0.0"
+        },
+        "runtime": {
+          "PitzzaPalace.interface.dll": {}
+        }
+      },
+      "PitzzaPalace.Library/1.0.0": {
+        "runtime": {
+          "ClassLibrary1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PitzzaPalace.interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PitzzaPalace.Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

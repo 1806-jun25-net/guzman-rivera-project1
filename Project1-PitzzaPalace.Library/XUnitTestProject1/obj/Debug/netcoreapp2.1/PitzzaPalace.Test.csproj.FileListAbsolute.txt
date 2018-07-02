@@ -1,0 +1,14 @@
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\PitzzaPalace.Test.deps.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\PitzzaPalace.Test.runtimeconfig.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\PitzzaPalace.Test.runtimeconfig.dev.json
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\PitzzaPalace.Test.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\bin\Debug\netcoreapp2.1\PitzzaPalace.Test.pdb
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.csprojAssemblyReference.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.csproj.CoreCompileInputs.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.AssemblyInfoInputs.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.AssemblyInfo.cs
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\XUnitTestProject1\obj\Debug\netcoreapp2.1\PitzzaPalace.Test.pdb

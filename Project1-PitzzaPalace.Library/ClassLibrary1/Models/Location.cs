@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1.Models
 {
-    class Inventory
+    class Location
     {
     }
 }

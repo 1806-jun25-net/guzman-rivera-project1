@@ -42,8 +42,9 @@
   <ItemGroup>
     <Compile Include="Interface\IPitzza.cs" />
     <Compile Include="Interface\IUser.cs" />
-    <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\PeperoniPitzza.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Pitzza.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

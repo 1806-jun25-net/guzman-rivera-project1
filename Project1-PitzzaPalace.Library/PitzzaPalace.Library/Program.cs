@@ -17,7 +17,7 @@ namespace PitzzaPalace.Library
                 DefaultStore = "Bayamon"
             };
 
-            Console.WriteLine($"Showing movie {user1}!");
+            Console.WriteLine($"Showing movie {user1.Name}!");
             Console.ReadLine();
 
         }

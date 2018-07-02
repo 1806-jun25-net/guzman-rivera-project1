@@ -4,3 +4,9 @@ C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.L
 C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.Library.csproj.CoreCompileInputs.cache
 C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.Library.csprojAssemblyReference.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.Library.csproj.CoreCompileInputs.cache
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Revature\guzman-rivera-project1\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
