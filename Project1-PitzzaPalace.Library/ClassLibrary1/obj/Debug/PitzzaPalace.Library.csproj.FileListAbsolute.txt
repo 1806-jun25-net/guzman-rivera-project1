@@ -1,0 +1,6 @@
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.Library.csprojAssemblyReference.cache
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\PitzzaPalace.Library.csproj.CoreCompileInputs.cache
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Revature\Project1-PitzzaPalace.Library\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

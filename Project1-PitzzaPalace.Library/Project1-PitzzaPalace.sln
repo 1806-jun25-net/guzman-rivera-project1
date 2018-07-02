@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitzzaPalace", "PitzzaPalace.Library\PitzzaPalace.csproj", "{2518C29D-401E-4FB9-BBC6-7075DB3E874D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitzzaPalace.Library", "ClassLibrary1\PitzzaPalace.Library.csproj", "{273379CB-5826-4FA4-9778-AE400793E953}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2518C29D-401E-4FB9-BBC6-7075DB3E874D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2518C29D-401E-4FB9-BBC6-7075DB3E874D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2518C29D-401E-4FB9-BBC6-7075DB3E874D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2518C29D-401E-4FB9-BBC6-7075DB3E874D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273379CB-5826-4FA4-9778-AE400793E953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273379CB-5826-4FA4-9778-AE400793E953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273379CB-5826-4FA4-9778-AE400793E953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273379CB-5826-4FA4-9778-AE400793E953}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7A3F269-51D6-47FC-98F8-7192133406BC}
+	EndGlobalSection
+EndGlobal

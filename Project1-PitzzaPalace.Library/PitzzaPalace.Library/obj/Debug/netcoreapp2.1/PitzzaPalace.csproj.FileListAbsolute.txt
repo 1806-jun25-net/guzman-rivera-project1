@@ -1,0 +1,14 @@
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.deps.json
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.runtimeconfig.json
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.runtimeconfig.dev.json
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.dll
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\PitzzaPalace.pdb
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.csprojAssemblyReference.cache
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.csproj.CoreCompileInputs.cache
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.AssemblyInfoInputs.cache
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.AssemblyInfo.cs
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.dll
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.pdb
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\ClassLibrary1.dll
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\bin\Debug\netcoreapp2.1\ClassLibrary1.pdb
+C:\Revature\Project1-PitzzaPalace.Library\PitzzaPalace.Library\obj\Debug\netcoreapp2.1\PitzzaPalace.csproj.CopyComplete
