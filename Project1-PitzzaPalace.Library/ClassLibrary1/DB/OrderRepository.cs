@@ -14,9 +14,7 @@ namespace ClassLibrary1.DB
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
-
-
-
+        
         public void SubmitOrder(string name, string lastname, string phoneNumber, int? location)
         {
             // LINQ: First fails by throwing exception,

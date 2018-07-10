@@ -10,6 +10,7 @@ namespace PizzaPalace
     {
         Location2 P1 = new Location2();
         string Selection, name, lastname, phonenumber;
+        Order2 Setnames = new Order2();
 
         // Main interface
         public void WellcomeMenu()
@@ -26,6 +27,7 @@ namespace PizzaPalace
             Console.WriteLine(" Phone number (just numbers): ");
             phonenumber = Console.ReadLine();
             user.Add(new User2(name, lastname, phonenumber));
+            Setnames.nAME = name;
 
 
 
