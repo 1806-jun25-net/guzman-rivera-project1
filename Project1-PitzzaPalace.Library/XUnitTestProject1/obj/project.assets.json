@@ -5714,9 +5714,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\XUnitTestProject1\\PitzzaPalace.Test.csproj",
-      "projectName": "PitzzaPalace.Test",
-      "projectPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\XUnitTestProject1\\PitzzaPalace.Test.csproj",
+      "projectUniqueName": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\XUnitTestProject1\\PizzaPalace.Test.csproj",
+      "projectName": "PizzaPalace.Test",
+      "projectPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\XUnitTestProject1\\PizzaPalace.Test.csproj",
       "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
       "outputPath": "C:\\Revature\\guzman-rivera-project1\\Project1-PitzzaPalace.Library\\XUnitTestProject1\\obj\\",
       "projectStyle": "PackageReference",

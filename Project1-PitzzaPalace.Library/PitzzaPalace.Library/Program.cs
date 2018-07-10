@@ -1,5 +1,9 @@
-﻿using ClassLibrary1.Models;
+﻿using ClassLibrary1;
+using ClassLibrary1.Models;
+using Microsoft.Extensions.Options;
+using PizzaPalace;
 using System;
+using System.Collections.Generic;
 
 namespace PitzzaPalace.Library
 {
@@ -7,18 +11,31 @@ namespace PitzzaPalace.Library
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World!");
-            User user1 = new User
+            ////////////////////////// Objects //////////////////////
+            Location2 P1 = new Location2();
+            ConsoleMenu menus = new ConsoleMenu();
+            /////////////////////////////////////////////////////////
+            bool a = true;
+            while (a)
             {
-                Name = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                PhoneNumber = Console.ReadLine(),
-                LastOrder = "Today",
-                DefaultStore = "Bayamon"
-            };
+                ///////////////// call first menu [ WELCOME ] //////////////////////
 
-            Console.WriteLine($"Showing movie {user1.Name}!");
-            Console.ReadLine();
+
+
+                menus.WellcomeMenu();
+
+                /////////////////////////////////////////////////////////////////
+
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("DONE!!");
+                Console.WriteLine("");
+                Console.WriteLine();
+                Console.ReadLine();
+                a = false;
+                ////////////////////////////////////////////////////////////////////
+
+            }
 
         }
     }
