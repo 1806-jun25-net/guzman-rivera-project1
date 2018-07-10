@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    class LocationRepository
+    public class LocationRepository
     {
 
         private readonly PizzaPalacedbContext _db;

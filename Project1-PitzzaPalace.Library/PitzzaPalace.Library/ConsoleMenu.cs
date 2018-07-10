@@ -30,13 +30,16 @@ namespace PizzaPalace
 
 
             //var repo = new UserRepository(new PizzaPalacedbContext());
-            var repo = new LocationRepository(new PizzaPalacedbContext());
-
+            var repo = new UserRepository(new PizzaPalacedbContext());
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("     Searching for user please wait...");
             var Location = repo.GetDefaultLocation(name, phonenumber);
-            repo.InsertLoc("logre", 1, 2, 31, 5, 6, 1, 6, 1, 43);
+
             switch (Location)
             {
                 case 0:
+                    WelcomeNewUser();
                     LocationMenu();
                     break;
                 case 1:
@@ -59,7 +62,7 @@ namespace PizzaPalace
                     LocationMenu();
                     break;
             }
-        } 
+        }
 
         public void Found()
         {
@@ -68,6 +71,16 @@ namespace PizzaPalace
             Console.WriteLine("");
             Console.WriteLine(" Welcome Back " + name + "!");
             Console.WriteLine("Redirecting to your favorite Pizza Paradise");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+
+        }
+
+        public void WelcomeNewUser()
+        {
+            Console.WriteLine("");
+            Console.WriteLine(" ============= Welcome " + name + "================");
             Console.WriteLine("");
             Console.WriteLine("Press enter to continue...");
             Console.ReadLine();

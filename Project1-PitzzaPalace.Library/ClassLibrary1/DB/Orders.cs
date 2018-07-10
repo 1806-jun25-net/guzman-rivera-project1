@@ -11,6 +11,7 @@ namespace ClassLibrary1
         public int? OrderId { get; set; }
         public int? PizzaId { get; set; }
         public int? Locations { get; set; }
+        public DateTime? DateTimeOrder { get; set; }
 
         public Locations LocationsNavigation { get; set; }
         public Pizza Pizza { get; set; }

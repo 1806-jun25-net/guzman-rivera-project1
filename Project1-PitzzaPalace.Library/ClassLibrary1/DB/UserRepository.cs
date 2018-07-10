@@ -79,6 +79,7 @@ namespace ClassLibrary1
                 Chorizo = chorizo
             };
             _db.Add(locat);
+            _db.SaveChanges();
         }
 
         //public void InsertLoc(string loc, int? doug, int? cheese, int? pepperoni, int? sausage, int? bacon, int? onion, int? chiken, int? sauce, int? chorizo)

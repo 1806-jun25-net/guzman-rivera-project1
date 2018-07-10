@@ -132,8 +132,8 @@
     <Compile Include="Models\Order2.cs" />
     <Compile Include="Models\Pizza2.cs" />
     <Compile Include="Models\User2.cs" />
-    <Compile Include="DB\Orders.cs" />
     <Compile Include="DB\Pizza.cs" />
+    <Compile Include="DB\Orders.cs" />
     <Compile Include="DB\PizzaPalacedbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DB\UserRepository.cs" />

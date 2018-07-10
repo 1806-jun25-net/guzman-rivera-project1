@@ -69,6 +69,10 @@ namespace ClassLibrary1
 
                 entity.ToTable("Orders", "Pizzeria");
 
+                entity.Property(e => e.DateTimeOrder)
+                    .HasColumnName("DateTime_order")
+                    .HasColumnType("datetime");
+
                 entity.Property(e => e.OrderId).HasColumnName("Order_id");
 
                 entity.Property(e => e.PizzaId).HasColumnName("PizzaID");
