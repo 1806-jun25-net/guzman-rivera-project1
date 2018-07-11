@@ -15,7 +15,7 @@ namespace ClassLibrary1.Models
 
         ///////////////////////////////////////////////////////////////
 
-        public void PizzaPalace(List<User2> user3,int thelocation)
+        public void PizzaPalace(List<User2> user3,int? thelocation)
         {
             Console.Clear();
             Console.WriteLine("========== Welcome to Pizza Palace! ==========");
@@ -35,7 +35,9 @@ namespace ClassLibrary1.Models
             Console.WriteLine("");
             Console.WriteLine("6) Make your own!");
             Console.WriteLine("");
-            Console.WriteLine("7) Change Location");                               //////// Call function if selected 6////////
+            Console.WriteLine("7) Change Location");
+            Console.WriteLine("");
+            Console.WriteLine("8) Close aplication");  //////// Call function if selected 6////////
             PizzaSelected = Console.ReadLine(); // Stored pizza
 
             switch (PizzaSelected)
@@ -51,6 +53,9 @@ namespace ClassLibrary1.Models
                 case "7":
                     ChangeLocation(user3, 1);
                     break;
+                case "8":
+                    Environment.Exit(0);
+                    break;
                 default:
                     Console.WriteLine("");
                     Console.WriteLine("Choose size from 1 to 7!");
@@ -62,7 +67,7 @@ namespace ClassLibrary1.Models
             }
         }
 
-        public void Belitopizza(List<User2> user3, int thelocation)
+        public void Belitopizza(List<User2> user3, int? thelocation)
         {
             Console.Clear();
             Console.WriteLine("====*===== Welcome to Belito's Pizza! ====*=====");
@@ -80,7 +85,9 @@ namespace ClassLibrary1.Models
             Console.WriteLine("");
             Console.WriteLine("5) Make your own!");
             Console.WriteLine("");
-            Console.WriteLine("6) Change Location");                               //////// Call function if selected 6////////
+            Console.WriteLine("6) Change Location");
+            Console.WriteLine("");
+            Console.WriteLine("7) Close aplication"); //////// Call function if selected 6////////
             PizzaSelected = Console.ReadLine(); // Stored pizza
 
             switch (PizzaSelected)
@@ -88,7 +95,15 @@ namespace ClassLibrary1.Models
                 case "1":
                 case "2":
                 case "3":
+                case "4":
+                case "5":
                     PizzaSize(user3, 3);
+                    break;
+                case "6":
+                    ChangeLocation(user3, 1);
+                    break;
+                case "7":
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("");
@@ -119,7 +134,9 @@ namespace ClassLibrary1.Models
             Console.WriteLine("");
             Console.WriteLine("5) Make your own!");
             Console.WriteLine("");
-            Console.WriteLine("6) Change Location");                               //////// Call function if selected 6////////
+            Console.WriteLine("6) Change Location");
+            Console.WriteLine("");
+            Console.WriteLine("7) Close aplication");//////// Call function if selected 6////////
             PizzaSelected = Console.ReadLine(); // Stored pizza
 
             switch (PizzaSelected)
@@ -127,7 +144,15 @@ namespace ClassLibrary1.Models
                 case "1":
                 case "2":
                 case "3":
+                case "4":
+                case "5":
                     PizzaSize(user3, 2);
+                    break;
+                case "6":
+                    ChangeLocation(user3, 1);
+                    break;
+                case "7":
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("");

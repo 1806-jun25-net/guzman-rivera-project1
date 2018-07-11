@@ -34,57 +34,62 @@ namespace PizzaPalace
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("     Searching for user please wait...");
-            //var Location = repo.GetDefaultLocation(name, phonenumber, user);
-            var Location = 1;
+            repo.GetManager(name, lastname);
 
-            Console.WriteLine("How many Pizza will you buy?: ");
-            string pizunt = Console.ReadLine();
-            int pizzacount = Int32.Parse(pizunt);
+            while (repo.GetManager(name, lastname))
+            {
+                Manager();
+            }
+            var Location = repo.GetDefaultLocation(name, phonenumber, user);
+            //var Location = 1;
+
+            //Console.WriteLine("\n\n      How many Pizza will you buy?: ");
+            //string pizunt = Console.ReadLine();
+            //int pizzacount = Int32.Parse(pizunt);
             
             switch (Location)
             {
                 case 0:
                     WelcomeNewUser(user);
-                    do
-                    {
+                    //do
+                    //{
 
-                        P1.PizzaPalace(user, Location);
-                        count++;
-                    } while (count <= pizzacount);
+                    //    P1.PizzaPalace(user, Location);
+                    //    count++;
+                    //} while (count <= pizzacount);
+                    P1.PizzaPalace(user, 1);
                     break;
                 case 1:
                     Found(user);
 
-                    do
-                    {
+                    //do
+                    //{
 
-                     P1.PizzaPalace(user, Location);
-                        count++;
-                    } while (count <= pizzacount);
-
-
-                    
+                    // P1.PizzaPalace(user, Location);
+                    //    count++;
+                    //} while (count <= pizzacount);
+                    P1.PizzaPalace(user, Location);
                     break;
                 case 2:
                     Found(user);
 
-                    do
-                    {
+                    //do
+                    //{
 
+                    //P1.Angelitospizza(user, 2);
+                    //    count++;
+                    //} while (count <= pizzacount);
                     P1.Angelitospizza(user, 2);
-                        count++;
-                    } while (count <= pizzacount);
-
                     break;
                 case 3:
                     Found(user);
 
-                    do
-                    {
+                    //do
+                    //{
 
-                        P1.Belitopizza(user, 3);
-                        count++;
-                    } while (count <= pizzacount);
+                    //    P1.Belitopizza(user, 3);
+                    //    count++;
+                    //} while (count <= pizzacount);
                     P1.Belitopizza(user, 3);
                     break;
                 default:
@@ -93,6 +98,55 @@ namespace PizzaPalace
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
                     LocationMenu(user);
+                    break;
+            }
+        }
+
+        public void Manager()
+        {
+            var repo = new UserRepository(new PizzaPalacedbContext());
+            Console.Clear();
+            Console.WriteLine("---- Manager Window ----");
+            Console.WriteLine("1 Search Users by name");
+            //Console.WriteLine("2 Details of an order");
+            Console.WriteLine("2 Close application ");
+            string select = Console.ReadLine();
+
+
+            switch (select)
+            {
+                case "1":
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Enter Name to search: ");
+                    repo.GetUser(Console.ReadLine());
+                    break;
+                case "2":
+                    Environment.Exit(0);
+                    break;
+
+                case "3":
+
+                    break;
+
+                case "4":
+
+                    break;
+
+                case "5":
+
+                    break;
+
+                case "6":
+
+                    break;
+
+                case "7":
+
+                    break;
+                default:
+                    Console.WriteLine("Sorry, invalid selection");
+                    Console.ReadLine();
+                    Manager();
                     break;
             }
         }
@@ -134,6 +188,8 @@ namespace PizzaPalace
             Console.WriteLine("2) for Angelitos Pizzeria.");
             Console.WriteLine("");
             Console.WriteLine("3) for Belito's Pizza.");
+            Console.WriteLine("");
+            Console.WriteLine("4) Close application");
             Selection = Console.ReadLine();
 
             /////////////// VALIDATION OF SELECTION ///////////////////
@@ -150,7 +206,10 @@ namespace PizzaPalace
 
                         P1.Belitopizza(user3, 3);
                         break;
-                    default:
+                    case "4":
+                    Environment.Exit(0);
+                    break;
+                default:
                         Console.WriteLine("");
                         Console.WriteLine("Choose from 1 to 3!");
                         Console.WriteLine("");

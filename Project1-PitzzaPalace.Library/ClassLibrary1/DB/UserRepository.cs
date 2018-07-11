@@ -18,19 +18,33 @@ namespace ClassLibrary1
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public  string GetUser(string UserToGet)
+        public void GetUser(string UserToGet)
         {
             var user = _db.Users.FirstOrDefault(g => g.Names == UserToGet);
             if (user == null)
             {
-                throw new ArgumentException("No user found");
+                 Console.WriteLine("No User found");
             }
             else
             {
-                string fullname = "" + user.Names + "" + user.LastName;
-                return fullname;
+                Console.WriteLine("" + user.Names + "" + user.LastName);
+                Console.ReadLine();
+                
+                
             }
+        }
 
+        public bool GetManager(string UserToGet, string phoneNumber)
+        {
+            var Manager = _db.Users.FirstOrDefault(g => g.Names == UserToGet && g.LastName == phoneNumber);
+            if (Manager == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
         }
 
@@ -59,6 +73,7 @@ namespace ClassLibrary1
                 LocationId = location
             };
             _db.Add(useradd);
+            _db.SaveChanges();
         }
 
         public void InsertLoc(string loc, int doug, int cheese, int pepperoni, int sausage, int bacon, int onion, int chiken, int sauce, int chorizo)
