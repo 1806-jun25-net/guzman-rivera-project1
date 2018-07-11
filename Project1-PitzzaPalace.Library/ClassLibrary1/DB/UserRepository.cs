@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ClassLibrary1.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace ClassLibrary1
 
         }
 
-        public int? GetDefaultLocation(string UserToGet, string phoneNumber)
+        public int? GetDefaultLocation(string UserToGet, string phoneNumber, List<User2> user3)
         {
             var user = _db.Users.FirstOrDefault(g => g.Names == UserToGet && g.PhoneNumber == phoneNumber);
             if (user == null)
@@ -47,10 +48,9 @@ namespace ClassLibrary1
 
         }
 
-        public void AddUser(string name, string lastname, string phoneNumber, int? location)
+        public void AddUser(string name, string lastname, string phoneNumber, int? location, List<User2> user3)
         {
-            // LINQ: First fails by throwing exception,
-            // FirstOrDefault fails to just null
+
             var useradd = new Users
             {
                 Names = name,
@@ -63,8 +63,7 @@ namespace ClassLibrary1
 
         public void InsertLoc(string loc, int doug, int cheese, int pepperoni, int sausage, int bacon, int onion, int chiken, int sauce, int chorizo)
         {
-            // LINQ: First fails by throwing exception,
-            // FirstOrDefault fails to just null
+
             var locat = new Locations
             {
                 Locations1 = loc,

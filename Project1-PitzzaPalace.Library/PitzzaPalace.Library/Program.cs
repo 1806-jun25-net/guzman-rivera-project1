@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1;
+using ClassLibrary1.DB;
 using ClassLibrary1.Models;
 using Microsoft.Extensions.Options;
 using PizzaPalace;
@@ -14,6 +15,7 @@ namespace PitzzaPalace.Library
             ////////////////////////// Objects //////////////////////
             Location2 P1 = new Location2();
             ConsoleMenu menus = new ConsoleMenu();
+            Order2 orderRepository = new Order2();
             /////////////////////////////////////////////////////////
             bool a = true;
             while (a)
@@ -21,6 +23,7 @@ namespace PitzzaPalace.Library
                 ///////////////// call first menu [ WELCOME ] //////////////////////
 
 
+                
 
                 menus.WellcomeMenu();
 

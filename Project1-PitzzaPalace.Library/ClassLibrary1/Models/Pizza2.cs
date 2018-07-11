@@ -4,19 +4,34 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Models
 {
-    class Pizza2
+    public class Pizza2
     {
-        Order2 NewOrder = new Order2();
+        //
+
         string pizza;
         int price;
         string size, select;
+        public int PizzaId { get; set; }
+        public string Pizza1 { get; set; }
+        public string Size { get; set; }
+        public int? Doug { get; set; }
+        public int? Cheese { get; set; }
+        public int? pepperoni { get; set; }
+        public int? Sausage { get; set; }
+        public int? bacon { get; set; }
+        public int? Onion { get; set; }
+        public int? Chiken { get; set; }
+        public int? Sauce { get; set; }
+        public int? chorizo { get; set; }
+        public int? PizzaPrice { get; set; }
 
-        List<int> toppins = new List<int>();
-        
+        List<int> toppins = new List<int>(); /////////////////////////////////////////////////// areglar
+  
 
-        public void Cheesepizza(string S)
+        public void Cheesepizza(string S, List<User2> user3, int thelocation)
         {
             pizza = "Cheese";
+            toppins.Clear();
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(0);
@@ -26,13 +41,14 @@ namespace ClassLibrary1.Models
             toppins.Add(0);
             toppins.Add(1);
             toppins.Add(0);
-            Price(S);
+            Price(S, user3, thelocation);
 
         }
 
-        public void Pepperoni(string S)
+        public void Pepperoni(string S, List<User2> user3 , int thelocation)
         {
             pizza = "Pepperoni";
+            toppins.Clear();
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(1);
@@ -42,13 +58,14 @@ namespace ClassLibrary1.Models
             toppins.Add(0);
             toppins.Add(1);
             toppins.Add(0);
-            Price(S);
+            Price(S, user3, thelocation);
 
         }
 
-        public void AllMeat(string S)
+        public void AllMeat(string S, List<User2> user3, int thelocation)
         {
             pizza = "AllMeat";
+            toppins.Clear();
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(0);
@@ -58,13 +75,14 @@ namespace ClassLibrary1.Models
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(1);
-            Price(S);
+            Price(S, user3, thelocation);
 
         }
 
-        public void Chorizo(string S)
+        public void Chorizo(string S, List<User2> user3, int thelocation)
         {
             pizza = "Chorizo";
+            toppins.Clear();
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(0);
@@ -74,12 +92,13 @@ namespace ClassLibrary1.Models
             toppins.Add(0);
             toppins.Add(1);
             toppins.Add(1);
-            Price(S);
+            Price(S, user3, thelocation);
         }
 
-        public void Bacon(string S)
+        public void Bacon(string S, List<User2> user3, int thelocation)
         {
             pizza = "Bacon";
+            toppins.Clear();
             toppins.Add(1);
             toppins.Add(1);
             toppins.Add(0);
@@ -89,10 +108,10 @@ namespace ClassLibrary1.Models
             toppins.Add(0);
             toppins.Add(1);
             toppins.Add(0);
-            Price(S);
+            Price(S, user3, thelocation);
         }
 
-        public void Price(string S)
+        public void Price(string S, List<User2> user3, int thelocation)
         {
             if (S == "1")
             {
@@ -109,15 +128,16 @@ namespace ClassLibrary1.Models
                 size = "Large";
                 price = 17;
             }
-            Submit();
+            Submit(user3, thelocation, size);
         }
 
-        public void Submit()
+        public void Submit(List<User2> user3, int thelocation,  string size)
         {
-            NewOrder.SubmitOrder(size + " " + pizza + " Pizza", price,toppins);
+            Order2 NewOrder = new Order2();
+            NewOrder.SubmitOrder(pizza + " Pizza", price,toppins, user3, thelocation, size);
         }
 
-        public void CustomMenu(string s)
+        public void CustomMenu(string s, List<User2> user3, int thelocation)
         {
             string Sause = ("");
             string pepone = ("");
@@ -126,15 +146,16 @@ namespace ClassLibrary1.Models
             string chiken = ("");
             string chorixo = ("");
 
-            toppins.Add(1); // doug
+            toppins.Clear();
+            toppins.Add(1); // doug = 0
             toppins.Add(1); // cheese
             toppins.Add(0); // peppe
-            toppins.Add(0); // Sas
+            toppins.Add(0); // Sas = 3
             toppins.Add(0); // Bac
-            toppins.Add(0); //onio 6
+            toppins.Add(0); //onio = 6
             toppins.Add(0); // chi
-            toppins.Add(1); // sauce 8
-            toppins.Add(0); // chori
+            toppins.Add(1); // sauce 
+            toppins.Add(0); // chori = 8
 
         bool des = true;
 
@@ -166,32 +187,32 @@ namespace ClassLibrary1.Models
                 switch (select)
                 {
                     case "1":
-                        toppins[3] = 1; // peperoni
+                        toppins[2] = 1; // peperoni
                         pepone = ("✓");
                         break;
                     case "2":
-                        toppins[4] = 1; // Sausage
+                        toppins[3] = 1; // Sausage
                         Sause = ("✓");
                         break;
                     case "3":
-                        toppins[5] = 1; // Baacon
+                        toppins[4] = 1; // Baacon
                         bacon = ("✓");
                         break;
                     case "4":
-                        toppins[6] = 1; // onion
+                        toppins[5] = 1; // onion
                         onion = ("✓");
                         break;
                     case "5":
-                        toppins[7] = 1; // chicken
+                        toppins[6] = 1; // chicken
                         chiken = ("✓");
                         break;
                     case "6":
-                        toppins[9] = 1; // chorizo
+                        toppins[8] = 1; // chorizo
                         chorixo = ("✓");
                         break;
                     case "7": // finish
                         pizza = "Custom";
-                        Price(s);
+                        Price(s, user3, thelocation);
                         break;
                     default:
                         Console.WriteLine("Choose toppings from 1 to 6!");

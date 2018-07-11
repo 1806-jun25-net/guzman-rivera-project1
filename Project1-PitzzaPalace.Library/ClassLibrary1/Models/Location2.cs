@@ -11,10 +11,11 @@ namespace ClassLibrary1.Models
 
         //////////////////// Pizza/Size variable ///////////////////////
         string PizzaSelected, SizeOfPizza, sel;
+        int TheLocation;
 
         ///////////////////////////////////////////////////////////////
 
-        public void PizzaPalace()
+        public void PizzaPalace(List<User2> user3,int thelocation)
         {
             Console.Clear();
             Console.WriteLine("========== Welcome to Pizza Palace! ==========");
@@ -45,10 +46,10 @@ namespace ClassLibrary1.Models
                 case "4":
                 case "5":
                 case "6":
-                    PizzaSize();
+                    PizzaSize(user3, 1);
                     break;
                 case "7":
-                    ChangeLocation();
+                    ChangeLocation(user3, 1);
                     break;
                 default:
                     Console.WriteLine("");
@@ -56,12 +57,12 @@ namespace ClassLibrary1.Models
                     Console.WriteLine("");
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
-                    PizzaPalace();
+                    PizzaPalace(user3, 1);
                     break;
             }
         }
 
-        public void Belitopizza()
+        public void Belitopizza(List<User2> user3, int thelocation)
         {
             Console.Clear();
             Console.WriteLine("====*===== Welcome to Belito's Pizza! ====*=====");
@@ -87,7 +88,7 @@ namespace ClassLibrary1.Models
                 case "1":
                 case "2":
                 case "3":
-                    PizzaSize();
+                    PizzaSize(user3, 3);
                     break;
                 default:
                     Console.WriteLine("");
@@ -95,12 +96,12 @@ namespace ClassLibrary1.Models
                     Console.WriteLine("");
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
-                    Belitopizza();
+                    Belitopizza(user3, 3);
                     break;
             }
         }
 
-        public void Angelitospizza()
+        public void Angelitospizza(List<User2> user3, int thelocation)
         {
             Console.Clear();
             Console.WriteLine("=====#==== Welcome to Angelitos Pizza! =====#====");
@@ -126,7 +127,7 @@ namespace ClassLibrary1.Models
                 case "1":
                 case "2":
                 case "3":
-                    PizzaSize();
+                    PizzaSize(user3, 2);
                     break;
                 default:
                     Console.WriteLine("");
@@ -134,13 +135,13 @@ namespace ClassLibrary1.Models
                     Console.WriteLine("");
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
-                    Angelitospizza();
+                    Angelitospizza(user3, 2);
                     break;
             }
 
         }
 
-        public void PizzaSize()
+        public void PizzaSize(List<User2> user3, int thelocation)
         {
             Console.Clear();
             Console.WriteLine("=========== Choose the size of the pizza ===========");
@@ -157,13 +158,13 @@ namespace ClassLibrary1.Models
             switch (SizeOfPizza)
             {
                 case "1":
-                    Selection(PizzaSelected, SizeOfPizza);
+                    Selection(PizzaSelected, SizeOfPizza, user3, thelocation);
                     break;
                 case "2":
-                    Selection(PizzaSelected, SizeOfPizza);
+                    Selection(PizzaSelected, SizeOfPizza, user3, thelocation);
                     break;
                 case "3":
-                    Selection(PizzaSelected, SizeOfPizza);
+                    Selection(PizzaSelected, SizeOfPizza, user3, thelocation);
                     break;
                 default:
                     Console.WriteLine("");
@@ -171,35 +172,35 @@ namespace ClassLibrary1.Models
                     Console.WriteLine("");
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
-                    PizzaSize();
+                    PizzaSize(user3, thelocation);
                     break;
             }
         }
 
-        public void Selection(string p, string s)
+        public void Selection(string p, string s, List<User2> user3, int thelocation)
         {
             switch (p)
             {
                 case "1":
-                    theone.Cheesepizza(s);
+                    theone.Cheesepizza(s, user3, thelocation);
                     break;
                 case "2":
-                    theone.Pepperoni(s);
+                    theone.Pepperoni(s, user3, thelocation);
                     break;
                 case "3":
-                    theone.AllMeat(s);
+                    theone.AllMeat(s, user3, thelocation);
                     break;
                 case "4":
-                    theone.Chorizo(s);
+                    theone.Chorizo(s, user3, thelocation);
                     break;
                 case "5":
-                    theone.Bacon(s);
+                    theone.Bacon(s, user3, thelocation);
                     break;
                 case "6":
-                    theone.CustomMenu(s);
+                    theone.CustomMenu(s, user3, thelocation);
                     break;
                 case "7":
-                    ChangeLocation();
+                    ChangeLocation(user3, thelocation);
                     break;
                 default:
                     Console.WriteLine("Default case of Selection");
@@ -207,7 +208,7 @@ namespace ClassLibrary1.Models
             }
         }
 
-        public void ChangeLocation()
+        public void ChangeLocation(List<User2> user3, int thelocation)
         {
             Console.Clear();
             Console.WriteLine("======== Choose location ========");
@@ -223,13 +224,16 @@ namespace ClassLibrary1.Models
                 switch (sel)
                 {
                     case "1":
-                        PizzaPalace();
+                        TheLocation = Int32.Parse(sel);
+                        PizzaPalace(user3, TheLocation);
                         break;
                     case "2":
-                        Angelitospizza();
+                        TheLocation = Int32.Parse(sel);
+                        Angelitospizza(user3, TheLocation);
                         break;
                     case "3":
-                        Belitopizza();
+                        TheLocation = Int32.Parse(sel);
+                        Belitopizza(user3, TheLocation);
                         break;
                     default:
                         Console.WriteLine("");
@@ -237,7 +241,7 @@ namespace ClassLibrary1.Models
                         Console.WriteLine("");
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
-                        ChangeLocation();
+                        ChangeLocation(user3, thelocation);
                         break;
                 }
             

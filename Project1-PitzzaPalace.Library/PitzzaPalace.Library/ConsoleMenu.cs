@@ -11,7 +11,7 @@ namespace PizzaPalace
         Location2 P1 = new Location2();
         string Selection, name, lastname, phonenumber;
         Order2 Setnames = new Order2();
-
+        
         // Main interface
         public void WellcomeMenu()
         {
@@ -27,69 +27,101 @@ namespace PizzaPalace
             Console.WriteLine(" Phone number (just numbers): ");
             phonenumber = Console.ReadLine();
             user.Add(new User2(name, lastname, phonenumber));
-            Setnames.nAME = name;
 
-
-
+            int count = 1;
             //var repo = new UserRepository(new PizzaPalacedbContext());
             var repo = new UserRepository(new PizzaPalacedbContext());
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("     Searching for user please wait...");
-            var Location = repo.GetDefaultLocation(name, phonenumber);
+            //var Location = repo.GetDefaultLocation(name, phonenumber, user);
+            var Location = 1;
 
+            Console.WriteLine("How many Pizza will you buy?: ");
+            string pizunt = Console.ReadLine();
+            int pizzacount = Int32.Parse(pizunt);
+            
             switch (Location)
             {
                 case 0:
-                    WelcomeNewUser();
-                    LocationMenu();
+                    WelcomeNewUser(user);
+                    do
+                    {
+
+                        P1.PizzaPalace(user, Location);
+                        count++;
+                    } while (count <= pizzacount);
                     break;
                 case 1:
-                    Found();
-                    P1.PizzaPalace();
+                    Found(user);
+
+                    do
+                    {
+
+                     P1.PizzaPalace(user, Location);
+                        count++;
+                    } while (count <= pizzacount);
+
+
+                    
                     break;
                 case 2:
-                    Found();
-                    P1.Angelitospizza();
+                    Found(user);
+
+                    do
+                    {
+
+                    P1.Angelitospizza(user, 2);
+                        count++;
+                    } while (count <= pizzacount);
+
                     break;
                 case 3:
-                    Found();
-                    P1.Belitopizza();
+                    Found(user);
+
+                    do
+                    {
+
+                        P1.Belitopizza(user, 3);
+                        count++;
+                    } while (count <= pizzacount);
+                    P1.Belitopizza(user, 3);
                     break;
                 default:
                     Console.WriteLine("No Default Location in ConsoleMenu()");
                     Console.WriteLine("Redirecting to locationMenu");
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
-                    LocationMenu();
+                    LocationMenu(user);
                     break;
             }
         }
 
-        public void Found()
+        public void Found(List<User2> user3)
         {
             Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine(" Welcome Back " + name + "!");
-            Console.WriteLine("Redirecting to your favorite Pizza Paradise");
+            Console.WriteLine("/////////////// Welcome Back " + name + "! \\\\\\\\\\\\\\\\");
             Console.WriteLine("");
-            Console.WriteLine("Press enter to continue...");
+            Console.WriteLine("        Redirecting to your favorite Pizza Paradise!");
+            Console.WriteLine("");
+            Console.WriteLine("                Press enter to continue...");
             Console.ReadLine();
 
         }
 
-        public void WelcomeNewUser()
+        public void WelcomeNewUser(List<User2> user3)
         {
             Console.WriteLine("");
-            Console.WriteLine(" ============= Welcome " + name + "================");
+            Console.WriteLine(" ============= No User found ================");
             Console.WriteLine("");
-            Console.WriteLine("Press enter to continue...");
+            Console.WriteLine("         Press enter to continue...");
             Console.ReadLine();
 
         }
 
-        public void LocationMenu()
+        public void LocationMenu(List<User2> user3)
         {
             var repo = new UserRepository(new PizzaPalacedbContext());
 
@@ -108,15 +140,15 @@ namespace PizzaPalace
             switch (Selection)
                 {
                     case "1":
-                        P1.PizzaPalace();
+                        P1.PizzaPalace(user3, 1);
                         break;
                     case "2":
 
-                        P1.Angelitospizza();
+                        P1.Angelitospizza(user3, 2);
                         break;
                     case "3":
 
-                        P1.Belitopizza();
+                        P1.Belitopizza(user3, 3);
                         break;
                     default:
                         Console.WriteLine("");
@@ -124,7 +156,7 @@ namespace PizzaPalace
                         Console.WriteLine("");
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
-                        LocationMenu();
+                        LocationMenu(user3);
                         break;
                 }
         }
