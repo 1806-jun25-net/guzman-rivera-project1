@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PizzaPalace.Data.Orders>
+
+@{
+    ViewData["Title"] = "PizzaPalace";
+}
+
+<h2>PizzaPalace</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" style="border: dashed">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationsIdfk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserIdfk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationsIdfkNavigation.LocationsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserIdfkNavigation.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

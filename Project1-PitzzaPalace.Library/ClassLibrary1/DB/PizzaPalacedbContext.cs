@@ -65,38 +65,36 @@ namespace ClassLibrary1
 
             modelBuilder.Entity<Orders>(entity =>
             {
-                entity.HasKey(e => e.Transactions);
+                entity.HasKey(e => e.OrderId);
 
                 entity.ToTable("Orders", "Pizzeria");
+
+                entity.Property(e => e.OrderId).HasColumnName("Order_ID");
 
                 entity.Property(e => e.DateTimeOrder)
                     .HasColumnName("DateTime_order")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.OrderId).HasColumnName("Order_id");
+                entity.Property(e => e.LocationsIdfk).HasColumnName("LocationsIDFK");
 
-                entity.Property(e => e.PizzaId).HasColumnName("PizzaID");
+                entity.Property(e => e.UserIdfk).HasColumnName("UserIDFK");
 
-                entity.Property(e => e.Size)
-                    .HasMaxLength(225)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.LocationsNavigation)
+                entity.HasOne(d => d.LocationsIdfkNavigation)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.Locations)
-                    .HasConstraintName("FK_OrderLocTOlocID");
+                    .HasForeignKey(d => d.LocationsIdfk)
+                    .HasConstraintName("FK_LocID");
 
-                entity.HasOne(d => d.Pizza)
+                entity.HasOne(d => d.UserIdfkNavigation)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.PizzaId)
-                    .HasConstraintName("FK_OrderPizzaTOPizzaID");
+                    .HasForeignKey(d => d.UserIdfk)
+                    .HasConstraintName("FK_USERID");
             });
 
             modelBuilder.Entity<Pizza>(entity =>
             {
                 entity.ToTable("Pizza", "Pizzeria");
 
-                entity.Property(e => e.PizzaId).HasColumnName("Pizza_id");
+                entity.Property(e => e.PizzaId).HasColumnName("PizzaID");
 
                 entity.Property(e => e.Bacon).HasColumnName("bacon");
 
@@ -109,6 +107,8 @@ namespace ClassLibrary1
                 entity.Property(e => e.Doug).HasColumnName("doug");
 
                 entity.Property(e => e.Onion).HasColumnName("onion");
+
+                entity.Property(e => e.OrdersIdfk).HasColumnName("OrdersIDFK");
 
                 entity.Property(e => e.Pepperoni).HasColumnName("pepperoni");
 
@@ -124,21 +124,26 @@ namespace ClassLibrary1
                 entity.Property(e => e.Size)
                     .HasMaxLength(225)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.OrdersIdfkNavigation)
+                    .WithMany(p => p.Pizza)
+                    .HasForeignKey(d => d.OrdersIdfk)
+                    .HasConstraintName("FK__Pizza__OrdersIDF__09A971A2");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.ToTable("Users", "Pizzeria");
 
-                entity.Property(e => e.UsersId).HasColumnName("Users_id");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.LastName)
+                entity.Property(e => e.DefaultLocationFk).HasColumnName("Default_LocationFK");
+
+                entity.Property(e => e.FirstName)
                     .HasMaxLength(225)
                     .IsUnicode(false);
 
-                entity.Property(e => e.LocationId).HasColumnName("LocationID");
-
-                entity.Property(e => e.Names)
+                entity.Property(e => e.LastName)
                     .HasMaxLength(225)
                     .IsUnicode(false);
 
@@ -146,15 +151,10 @@ namespace ClassLibrary1
                     .HasMaxLength(225)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Location)
-                    .WithMany(p => p.UsersLocation)
-                    .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK_userLocTOlocID");
-
-                entity.HasOne(d => d.TransactionsNavigation)
-                    .WithMany(p => p.UsersTransactionsNavigation)
-                    .HasForeignKey(d => d.Transactions)
-                    .HasConstraintName("FK_userTranTOOrderTran");
+                entity.HasOne(d => d.DefaultLocationFkNavigation)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.DefaultLocationFk)
+                    .HasConstraintName("FK_DEFLOC");
             });
         }
     }

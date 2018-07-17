@@ -8,22 +8,23 @@ namespace ClassLibrary1.Models
     public class Order2
     {
         public DateTime DateTime { get; private set; }
-        
+
+
+        ////////////////////////// USER UPDATE LOC
 
         Pizza2 LaOrden = new Pizza2();
         List<Pizza2> lasPizzas = new List<Pizza2>();
+        public string ellocation, Name, lasN, Phon, userID;
 
-        public void SubmitOrder(string Pizza, int Price, List<int> toppins, List<User2> user3, int thelocation,  string size)
+        public void SubmitOrder(string Pizza, int Price, List<int> toppins, List<User2> user3, int thelocation, string size)
         {
             var repo = new OrderRepository(new PizzaPalacedbContext());
             DateTime = DateTime.Now;
             string Beli = "Belitos Pizza";
             string Angel = "Angelitos pizza";
             string Palace = "Pizza Palace";
-            string ellocation, Name, lasN, Phon;
+
             var top = new List<string>();
-
-
             top.Clear();
             top.Add("doug");
             top.Add("Cheese");
@@ -43,7 +44,7 @@ namespace ClassLibrary1.Models
             {
                 ellocation = Angel;
             }
-            else if(thelocation == 3)
+            else if (thelocation == 3)
             {
                 ellocation = Beli;
             }
@@ -51,22 +52,6 @@ namespace ClassLibrary1.Models
             {
                 ellocation = "No Location";
             }
-            /* 
-             * location
-             * pizza
-             * order
-             * usuario
-             * 
-             *  Check if ther is items to creat pizza 
-             *  
-             */
-
-            /*
-             * 
-             *  SQl to submit all
-             * 
-             * 
-             */
 
             Console.Clear();
             Console.WriteLine("========== Thank you for using Pizza Paradise!==========");
@@ -101,20 +86,24 @@ namespace ClassLibrary1.Models
             LaOrden.chorizo = toppins[8];
             LaOrden.PizzaPrice = Price;
 
+            var us = repo.GetUsertable();
 
+            ///// ADDING USER OLD WAY
+            //foreach (var item in user3)
+            //{
+            //    Name = item.Name;
+            //    lasN = item.LastName;
+            //    Phon = item.PhoneNumber;
+            //    repo.AddUser(Name, lasN, Phon, locat);
+            //}
 
+            //repo.GetUser(Name, lasN);
             repo.InventorySubStract(thelocation, toppins);
             repo.Addpizza(Pizza, size, toppins);
             repo.PlaceOrder(Price, size, 09, DateTime, 1, 2);
-            foreach (var item in user3)
-            {
-                Name = item.Name;
-                lasN = item.LastName;
-                Phon = item.PhoneNumber;
-                repo.AddUser(Name, lasN, Phon, locat);
-            }
-            
-            
+
+
+
 
             //show(lasPizzas);
             //repo.CustumizeInventory(toppins);
@@ -128,7 +117,7 @@ namespace ClassLibrary1.Models
               
              */
 
-           
+
 
         }
 
@@ -143,6 +132,6 @@ namespace ClassLibrary1.Models
               " Size:" + item.Size));
 
         }
-      
+
     }
 }

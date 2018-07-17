@@ -1,0 +1,46 @@
+﻿@model PizzaPalace.Data.Users
+
+@{
+    ViewData["Title"] = "SearcUser";
+}
+
+<h2 align="center">User Search</h2>
+
+<div>
+    <h4></h4>
+    <form asp-action="SearcUser">
+        @*Go to TheUser view and show user*@
+        <div class="form-actions no-color">
+            <p align="center">
+                Find by name: <input type="text" name="SearchString" />
+                <input type="submit" value="Search" class="btn btn-default" />
+            </p>
+        </div>
+    </form>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <h3>ID:</h3>@TempData["id"]
+        </dt>
+        <dt>
+            <h3>Name:</h3>@TempData["name"]
+        </dt>
+
+        <dt>
+            <h3>Last Name:</h3>@TempData["last"]
+        </dt>
+
+        <dt>
+            <h3>Phone:</h3>@TempData["phone"]
+        </dt>
+
+        <dt>
+            <h3>Location:</h3>@TempData["loc"]
+        </dt>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Manager</a>
+</div>

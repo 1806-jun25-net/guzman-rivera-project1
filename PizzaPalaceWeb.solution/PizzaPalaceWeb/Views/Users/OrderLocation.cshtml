@@ -1,0 +1,42 @@
+﻿@*@model Orders
+@using PizzaPalace.Data;
+@{
+    ViewData["Title"] = "OrderLocation";
+}
+
+<h2>OrderLocation</h2>
+<table>
+    <tr>
+        <th>order Id</th>
+        <th>Pizza</th>
+        <th>User ID (FK)</th>
+    </tr>
+    @foreach (Orders item in Orders)
+    {
+        <tr>
+            <td>@item.OrderId</td>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>
+
+<p><b>Student List</b></p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Enrollment No</th>
+    </tr>
+    @foreach (Student student in Model.Students)
+    {
+        <tr>
+            <td>@student.StudentId</td>
+            <td>@student.Code</td>
+            <td>@student.Name</td>
+            <td>@student.EnrollmentNo</td>
+        </tr>
+    }
+</table>*@  

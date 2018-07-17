@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<PizzaPalace.Data.Orders>
+@using PizzaPalace.Data;
+@{
+    ViewData["Title"] = "AngelitoOrder";
+}
+
+<h2>AngelitoOrder</h2>
+
+
+@*<div>
+    @Html.DropDownListFor(x=>"SelectedLocation", new List<SelectListItem>
+            {
+                  new SelectListItem() {Text = "Pizza Palace", Value = "1"},
+                  new SelectListItem() {Text = "Angelitos Pizza", Value = "2"},
+                  new SelectListItem() {Text = "Belito's Pizza", Value = "3"},
+
+            }, "Select A Size")
+</div>*@
+<table class="table" style="border: dashed">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationsIdfk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserIdfk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTimeOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationsIdfkNavigation.LocationsId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserIdfkNavigation.Id)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

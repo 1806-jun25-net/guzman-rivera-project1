@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace PizzaPalace.Data
+{
+    public partial class Locations
+    {
+        public Locations()
+        {
+            Orders = new HashSet<Orders>();
+            Users = new HashSet<Users>();
+        }
+
+        public int LocationsId { get; set; }
+        public string Locations1 { get; set; }
+        public int? Doug { get; set; }
+        public int? Cheese { get; set; }
+        public int? Pepperoni { get; set; }
+        public int? Sausage { get; set; }
+        public int? Bacon { get; set; }
+        public int? Onion { get; set; }
+        public int? Chiken { get; set; }
+        public int? Sauce { get; set; }
+        public int? Chorizo { get; set; }
+
+        public ICollection<Orders> Orders { get; set; }
+        public ICollection<Users> Users { get; set; }
+    }
+}

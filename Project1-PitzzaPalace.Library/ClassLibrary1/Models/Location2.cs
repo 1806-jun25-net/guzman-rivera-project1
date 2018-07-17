@@ -15,7 +15,7 @@ namespace ClassLibrary1.Models
 
         ///////////////////////////////////////////////////////////////
 
-        public void PizzaPalace(List<User2> user3,int? thelocation)
+        public void PizzaPalace(List<User2> user3, int? thelocation)
         {
             Console.Clear();
             Console.WriteLine("========== Welcome to Pizza Palace! ==========");
@@ -179,7 +179,7 @@ namespace ClassLibrary1.Models
             SizeOfPizza = Console.ReadLine();
 
             /////////////// VALIDATION OF SELECTION ///////////////////
-            
+
             switch (SizeOfPizza)
             {
                 case "1":
@@ -246,30 +246,30 @@ namespace ClassLibrary1.Models
             Console.WriteLine("3) for Belito's Pizza.");
             sel = Console.ReadLine();
             /////////////// VALIDATION OF SELECTION ///////////////////
-                switch (sel)
-                {
-                    case "1":
-                        TheLocation = Int32.Parse(sel);
-                        PizzaPalace(user3, TheLocation);
-                        break;
-                    case "2":
-                        TheLocation = Int32.Parse(sel);
-                        Angelitospizza(user3, TheLocation);
-                        break;
-                    case "3":
-                        TheLocation = Int32.Parse(sel);
-                        Belitopizza(user3, TheLocation);
-                        break;
-                    default:
-                        Console.WriteLine("");
-                        Console.WriteLine("Choose from 1 to 3!");
-                        Console.WriteLine("");
-                        Console.WriteLine("Press enter to continue...");
-                        Console.ReadLine();
-                        ChangeLocation(user3, thelocation);
-                        break;
-                }
-            
+            switch (sel)
+            {
+                case "1":
+                    TheLocation = Int32.Parse(sel);
+                    PizzaPalace(user3, TheLocation);
+                    break;
+                case "2":
+                    TheLocation = Int32.Parse(sel);
+                    Angelitospizza(user3, TheLocation);
+                    break;
+                case "3":
+                    TheLocation = Int32.Parse(sel);
+                    Belitopizza(user3, TheLocation);
+                    break;
+                default:
+                    Console.WriteLine("");
+                    Console.WriteLine("Choose from 1 to 3!");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
+                    ChangeLocation(user3, thelocation);
+                    break;
+            }
+
         }
     }
 }

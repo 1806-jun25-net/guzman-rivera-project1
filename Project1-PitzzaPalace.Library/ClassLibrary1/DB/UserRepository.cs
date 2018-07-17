@@ -20,23 +20,23 @@ namespace ClassLibrary1
 
         public void GetUser(string UserToGet)
         {
-            var user = _db.Users.FirstOrDefault(g => g.Names == UserToGet);
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet);
             if (user == null)
             {
-                 Console.WriteLine("No User found");
+                Console.WriteLine("No User found");
             }
             else
             {
-                Console.WriteLine("" + user.Names + "" + user.LastName);
+                Console.WriteLine("" + user.FirstName + "" + user.LastName);
                 Console.ReadLine();
-                
-                
+
+
             }
         }
 
         public bool GetManager(string UserToGet, string phoneNumber)
         {
-            var Manager = _db.Users.FirstOrDefault(g => g.Names == UserToGet && g.LastName == phoneNumber);
+            var Manager = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.LastName == phoneNumber);
             if (Manager == null)
             {
                 return false;
@@ -45,21 +45,22 @@ namespace ClassLibrary1
             {
                 return true;
             }
+            return false;
 
         }
 
         public int? GetDefaultLocation(string UserToGet, string phoneNumber, List<User2> user3)
         {
-            var user = _db.Users.FirstOrDefault(g => g.Names == UserToGet && g.PhoneNumber == phoneNumber);
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.PhoneNumber == phoneNumber);
             if (user == null)
             {
                 return 0;
             }
             else
             {
-                return user.LocationId;
+                return user.DefaultLocationFk;
             }
-
+            return 2;
         }
 
         public void AddUser(string name, string lastname, string phoneNumber, int? location, List<User2> user3)
@@ -67,10 +68,10 @@ namespace ClassLibrary1
 
             var useradd = new Users
             {
-                Names = name,
+                FirstName = name,
                 LastName = lastname,
                 PhoneNumber = phoneNumber,
-                LocationId = location
+                DefaultLocationFk = location
             };
             _db.Add(useradd);
             _db.SaveChanges();
@@ -102,7 +103,7 @@ namespace ClassLibrary1
         //    // FirstOrDefault fails to just null
         //    var useradd = new Locations
         //    {
-        //        Location = loc,
+        //        Locations1 = loc,
         //        doug = lastname,
         //        PhoneNumber = phoneNumber,
         //        LocationId = location

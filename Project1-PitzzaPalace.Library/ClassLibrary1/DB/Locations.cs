@@ -8,8 +8,7 @@ namespace ClassLibrary1
         public Locations()
         {
             Orders = new HashSet<Orders>();
-            UsersLocation = new HashSet<Users>();
-            UsersTransactionsNavigation = new HashSet<Users>();
+            Users = new HashSet<Users>();
         }
 
         public int LocationsId { get; set; }
@@ -25,7 +24,6 @@ namespace ClassLibrary1
         public int? Chorizo { get; set; }
 
         public ICollection<Orders> Orders { get; set; }
-        public ICollection<Users> UsersLocation { get; set; }
-        public ICollection<Users> UsersTransactionsNavigation { get; set; }
+        public ICollection<Users> Users { get; set; }
     }
 }

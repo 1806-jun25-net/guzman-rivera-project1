@@ -5,14 +5,11 @@ namespace ClassLibrary1
 {
     public partial class Pizza
     {
-        public Pizza()
-        {
-            Orders = new HashSet<Orders>();
-        }
-
         public int PizzaId { get; set; }
         public string Pizza1 { get; set; }
         public string Size { get; set; }
+        public double? Cost { get; set; }
+        public int? OrdersIdfk { get; set; }
         public int? Doug { get; set; }
         public int? Cheese { get; set; }
         public int? Pepperoni { get; set; }
@@ -23,6 +20,6 @@ namespace ClassLibrary1
         public int? Sauce { get; set; }
         public int? Chorizo { get; set; }
 
-        public ICollection<Orders> Orders { get; set; }
+        public Orders OrdersIdfkNavigation { get; set; }
     }
 }

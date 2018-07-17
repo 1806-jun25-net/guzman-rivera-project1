@@ -1,0 +1,99 @@
+﻿@model PizzaPalace.Data.Pizza
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Doug)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Doug)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cheese)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cheese)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pepperoni)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pepperoni)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sausage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sausage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bacon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bacon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Onion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Onion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chiken)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chiken)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sauce)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sauce)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chorizo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chorizo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdersIdfkNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrdersIdfkNavigation.OrderId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PizzaId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

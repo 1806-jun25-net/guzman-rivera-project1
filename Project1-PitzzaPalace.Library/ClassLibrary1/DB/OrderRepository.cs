@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +16,21 @@ namespace ClassLibrary1.DB
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
-        
+
         public void SubmitOrder(string name, string lastname, string phoneNumber, int? location)
         {
             // LINQ: First fails by throwing exception,
             // FirstOrDefault fails to just null
             var useradd = new Users
             {
-                Names = name,
+                FirstName = name,
                 LastName = lastname,
                 PhoneNumber = phoneNumber,
-                LocationId = location
+                DefaultLocationFk = location
             };
             _db.Add(useradd);
             _db.SaveChanges();
         }
-
-
-
 
         public void InventorySubStract(int location, List<int> toppins)
         {
@@ -42,8 +40,8 @@ namespace ClassLibrary1.DB
             {
                 Console.WriteLine("Problem substracting from inventory on: " + LocInventory);
             }
-            else if(LocInventory.Doug < 3)
-                {
+            else if (LocInventory.Doug < 3)
+            {
                 Console.WriteLine("No enough material for pizza " + LocInventory.Locations1);
                 Console.ReadLine();
                 Environment.Exit(0);
@@ -77,7 +75,7 @@ namespace ClassLibrary1.DB
 
         public void Addpizza(string pizza, string size, List<int> toppins)
         {
-            
+
             var Pizzaadd = new Pizza
             {
                 Pizza1 = pizza,
@@ -99,49 +97,148 @@ namespace ClassLibrary1.DB
 
         public void PlaceOrder(int cost, string size, int trans, DateTime date, int Pizaid, int location)
         {
-            var ID = _db.Pizza.LastOrDefault(g => g.PizzaId > 0);
-            var Pizzaadd = new Orders
-            {
-                Size = size,
-                Cost = cost,
-                OrderId = trans,
-                PizzaId = ID.PizzaId,
-                DateTimeOrder = date,
-                Locations = location,
-            };
-            _db.Add(Pizzaadd);
-            _db.SaveChanges();
-            Console.WriteLine("Order Submited to DB");
+            //var ID = _db.Pizza.LastOrDefault(g => g.PizzaId > 0);
+            //var Pizzaadd = new Orders
+            //{
+            //    Size = size,
+            //    Cost = cost,
+            //    OrderId = trans,
+            //    PizzaId = ID.PizzaId,
+            //    DateTimeOrder = date,
+            //    Locations = location,
+            //};
+            //_db.Add(Pizzaadd);
+            //_db.SaveChanges();
+            //Console.WriteLine("Order Submited to DB");
         }
 
-
-
-        public void AddUser(string name,string Last, string phone, int locaions)
+        public void AddUser(string name, string Last, string phone, int locaions)
         {
+
             var LocID = _db.Locations.LastOrDefault(g => g.LocationsId > 0);
-            var TransID = _db.Orders.LastOrDefault(g => g.Transactions > 0);
+            var TransID = _db.Orders.LastOrDefault(g => g.OrderId > 0);
             var user = new Users
             {
                 PhoneNumber = phone,
-                Names = name,
+                FirstName = name,
                 LastName = Last,
-                LocationId = locaions,
-                Transactions = TransID.Transactions,
-
+                DefaultLocationFk = locaions,
             };
             _db.Add(user);
             _db.SaveChanges();
         }
 
-        //public void Addpizza(List<Pizza2> PizzaObject)
-        //{
+        public void GetUserOrder(string UserToGet, string lastname)
+        {
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.LastName == lastname);
+            var userID = user.Id;
+            var won = GetOrdersTable();
+            var order = won.Where(q => q.UserIdfk == userID);
+            var pizzas = GetPizza();
+            
 
-        //    PizzaObject.ForEach(item => Console.WriteLine(" Name: " + item.Pizza1 + "\nPrice" + item.PizzaPrice + "\n" +
-        //       " Size:" + item.Size));
-        //    Console.ReadLine();
+            foreach (var item in order)
+            {
+                Console.WriteLine("\n      Order Number: " + item.OrderId + "  Date: " + item.DateTimeOrder);
 
-        //}
+                foreach (var item2 in pizzas)
+                {
+                    Console.WriteLine("\n Pizza: " + item2.Pizza1 + "\n Size: " + item2.Size + "\n Cost: "+ item2.Cost +"\n\n"  );
+                    
+                }
+            }
+        }
+
+        public IEnumerable<Orders> GetLocationOrders(int location_id)
+        {
+
+            var OrderLocations = _db.Orders.Where(g => g.LocationsIdfk == location_id).OrderBy(w => w.DateTimeOrder);
+            return OrderLocations;
+        }
 
 
+        public string SugestedOrder(string UserToGet, string lastnamer)
+        {
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.LastName == lastnamer);
+            var userID = user.Id;
+            var won = GetOrdersTable();
+            var order = won.LastOrDefault(q => q.UserIdfk == userID); //
+            var Allpizzas = GetPizza();
+            var pizzas = _db.Pizza.LastOrDefault(q => q.OrdersIdfk == order.OrderId);
+            Console.WriteLine(order.OrderId);
+            Console.WriteLine("\nLast Pizza: " + pizzas.Pizza1 + " Size: " + pizzas.Size + " Cost: $" + pizzas.Cost);
+            return "\nLast Pizza: " + pizzas.Pizza1 + " Size: " + pizzas.Size + " Cost: $" + pizzas.Cost;
+
+        }
+
+        public IEnumerable<Orders> GetOrdersTable()
+        {
+            List<Orders> order = _db.Orders.ToList();
+            return order;
+        }
+
+        public IEnumerable<Users> GetUsertable()
+        {
+            List<Users> user = _db.Users.ToList();
+            return user;
+        }
+
+        public IEnumerable<Pizza> GetPizza()
+        {
+            List<Pizza> pizza = _db.Pizza.ToList();
+            return pizza;
+        }
+
+        public IEnumerable<Locations> GetLocation()
+        {
+            List<Locations> loc = _db.Locations.ToList();
+            return loc;
+        }
+
+        public IEnumerable<Users> GetUser(string UserToGet, string lastname)
+        {
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.LastName == lastname);
+            if (user == null)
+            {
+                Console.WriteLine("No User found");
+                yield return null;
+            }
+            else
+            {
+                string userfound = ("" + user.FirstName + " " + user.LastName);
+                Console.WriteLine(userfound);
+                Console.ReadLine();
+                yield return user;
+            }
+        }
+
+        // cheaper 
+        public IEnumerable<Pizza> GetLocationOrdersByCheapest(int location_id)
+        {
+
+            var OrderLocations = _db.Pizza.Where(g => g.OrdersIdfk == location_id).OrderBy(g => g.Cost);
+            return OrderLocations;
+        }
+        //most expensive
+        public IEnumerable<Pizza> GetLocationOrdersMostExpensive(int location_id)
+        {
+
+            var OrderLocations = _db.Pizza.Where(g => g.OrdersIdfk == location_id).OrderByDescending(g => g.Cost);
+            return OrderLocations;
+        }
+        //latest order in location
+        public IEnumerable<Orders> GetLocationOrderLatest(int location_id)
+        {
+
+            var OrderLocations = _db.Orders.Where(g => g.LocationsIdfk == location_id).OrderByDescending(g => g.DateTimeOrder);
+            return OrderLocations;
+        }
+        //earliest order in location
+        public IEnumerable<Orders> GetLocationOrderEarliest(int location_id)
+        {
+
+            var OrderLocations = _db.Orders.Where(g => g.LocationsIdfk == location_id).OrderBy(g => g.DateTimeOrder);
+            return OrderLocations;
+        }
     }
 }

@@ -1,0 +1,89 @@
+﻿@model PizzaPalace.Data.Pizza
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Pizza</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pizza1" class="control-label"></label>
+                <input asp-for="Pizza1" class="form-control" />
+                <span asp-validation-for="Pizza1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label"></label>
+                <input asp-for="Cost" class="form-control" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrdersIdfk" class="control-label"></label>
+                <select asp-for="OrdersIdfk" class ="form-control" asp-items="ViewBag.OrdersIdfk"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doug" class="control-label"></label>
+                <input asp-for="Doug" class="form-control" />
+                <span asp-validation-for="Doug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cheese" class="control-label"></label>
+                <input asp-for="Cheese" class="form-control" />
+                <span asp-validation-for="Cheese" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pepperoni" class="control-label"></label>
+                <input asp-for="Pepperoni" class="form-control" />
+                <span asp-validation-for="Pepperoni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sausage" class="control-label"></label>
+                <input asp-for="Sausage" class="form-control" />
+                <span asp-validation-for="Sausage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bacon" class="control-label"></label>
+                <input asp-for="Bacon" class="form-control" />
+                <span asp-validation-for="Bacon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Onion" class="control-label"></label>
+                <input asp-for="Onion" class="form-control" />
+                <span asp-validation-for="Onion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chiken" class="control-label"></label>
+                <input asp-for="Chiken" class="form-control" />
+                <span asp-validation-for="Chiken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sauce" class="control-label"></label>
+                <input asp-for="Sauce" class="form-control" />
+                <span asp-validation-for="Sauce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chorizo" class="control-label"></label>
+                <input asp-for="Chorizo" class="form-control" />
+                <span asp-validation-for="Chorizo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

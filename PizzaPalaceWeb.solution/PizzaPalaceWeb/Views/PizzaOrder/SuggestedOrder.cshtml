@@ -1,0 +1,60 @@
+﻿@model PizzaOrders
+@using PizzaPalace.Data;
+
+@{
+    ViewData["Title"] = "SuggestedOrder";
+    var pizzas = (Pizza)ViewData["lastPizzasUser"];
+}
+
+<h2>Main Menu</h2>
+<h1>@pizzas.Size;</h1>
+<h1>@pizzas.Pizza1;</h1>
+<h1>@pizzas.Cost;</h1>
+@foreach (Users item in Model.UT)
+{
+    <h3>
+        Welcome back: @Html.DisplayFor(model => item.FirstName)@Html.DisplayFor(model => item.LastName)
+    </h3>
+}
+
+
+<div>
+    <h4>Pizza Orders</h4>
+
+    <dl class="dl-horizontal">
+
+        @foreach (Orders item2 in Model.OT)
+        {
+            <dt>
+                Date
+            </dt>
+            <dd>
+                @item2.DateTimeOrder
+            </dd>
+
+
+        }
+
+
+        @*<dd>
+                @Html.DisplayFor(model => model.DateTimeOrder)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LocationsIdfkNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LocationsIdfkNavigation.LocationsId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserIdfkNavigation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserIdfkNavigation.Id)
+            </dd>
+        *@
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

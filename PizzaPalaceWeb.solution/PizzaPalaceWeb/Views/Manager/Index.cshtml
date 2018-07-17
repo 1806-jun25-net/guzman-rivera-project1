@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PizzaPalace.Data.Users>
+
+@{
+    ViewData["Title"] = "Manager";
+}
+
+<h1 align="center">Manager Menu</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h4>1) Search users by name</h4>
+               
+                    <div class="form-group">
+                        <button  type="submit" class="btn btn-default "><a href="SearcUser">Go</a></button> 
+                    </div>
+               
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h4>2) Display all order history of a location</h4>
+                <form asp-action="HistoryLocation" method="get">
+                    <button type="submit">Submit</button>
+                </form>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h4>3) Display all order history of a user</h4>
+                <form asp-action="HistoryUser" method="get">
+                    <button type="submit">Submit</button>
+                </form>
+            </th>
+        </tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DefaultLocationFkNavigation)
+            </th>
+            <th></th>*@
+        </tr>
+    </thead>
+</table>

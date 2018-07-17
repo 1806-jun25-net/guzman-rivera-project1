@@ -1,0 +1,76 @@
+﻿@model PizzaPalace.Data.Locations
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Locations</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LocationsId" />
+            <div class="form-group">
+                <label asp-for="Locations1" class="control-label"></label>
+                <input asp-for="Locations1" class="form-control" />
+                <span asp-validation-for="Locations1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doug" class="control-label"></label>
+                <input asp-for="Doug" class="form-control" />
+                <span asp-validation-for="Doug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cheese" class="control-label"></label>
+                <input asp-for="Cheese" class="form-control" />
+                <span asp-validation-for="Cheese" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pepperoni" class="control-label"></label>
+                <input asp-for="Pepperoni" class="form-control" />
+                <span asp-validation-for="Pepperoni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sausage" class="control-label"></label>
+                <input asp-for="Sausage" class="form-control" />
+                <span asp-validation-for="Sausage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bacon" class="control-label"></label>
+                <input asp-for="Bacon" class="form-control" />
+                <span asp-validation-for="Bacon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Onion" class="control-label"></label>
+                <input asp-for="Onion" class="form-control" />
+                <span asp-validation-for="Onion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chiken" class="control-label"></label>
+                <input asp-for="Chiken" class="form-control" />
+                <span asp-validation-for="Chiken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sauce" class="control-label"></label>
+                <input asp-for="Sauce" class="form-control" />
+                <span asp-validation-for="Sauce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chorizo" class="control-label"></label>
+                <input asp-for="Chorizo" class="form-control" />
+                <span asp-validation-for="Chorizo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
