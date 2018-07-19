@@ -5,7 +5,6 @@ using PizzaPalace.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using PizzaPalace.Library.Models;
 
 namespace PizzaPalace.Library
 {
@@ -18,50 +17,23 @@ namespace PizzaPalace.Library
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        //public void GetUser(string UserToGet)
-        //{
-        //    var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet);
-        //    if (user == null)
-        //    {
-        //        Console.WriteLine("No User found");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("" + user.FirstName + "" + user.LastName);
-        //        Console.ReadLine();
+        public List<int> toppins = new List<int>();
 
-
-        //    }
-
-        //}
-
-       /* public int? GetDefaultLocation(string UserToGet, string phoneNumber, List<User2> user3)
+        public int GetUserIDByPhone(string findUser, string phone)
         {
-            var user = _db.Users.FirstOrDefault(g => g.FirstName == UserToGet && g.PhoneNumber == phoneNumber);
+
+            var user = _db.Users.FirstOrDefault(g => g.FirstName == findUser && g.PhoneNumber == phone);
             if (user == null)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                return user.DefaultLocationFk;
+                return user.Id;
             }
-            return 2;
-        }*/
 
-       /* public void AddUser(string name, string lastname, string phoneNumber, int? location, List<User2> user3)
-        {
 
-            var useradd = new Users
-            {
-                FirstName = name,
-                LastName = lastname,
-                PhoneNumber = phoneNumber,
-                DefaultLocationFk = location
-            };
-            _db.Add(useradd);
-            _db.SaveChanges();
-        }*/
+        }
 
         public void InsertLoc(string loc, int doug, int cheese, int pepperoni, int sausage, int bacon, int onion, int chiken, int sauce, int chorizo)
         {
@@ -83,39 +55,305 @@ namespace PizzaPalace.Library
             _db.SaveChanges();
         }
 
-        public void SubmitOrder(string name, string lastname, string phoneNumber, int? location)
+        public void SubmitOrder(int UserIDfk, int  LocationFK)
         {
             // LINQ: First fails by throwing exception,
             // FirstOrDefault fails to just null
-            var useradd = new Users
+            DateTime date = new DateTime();
+            var useradd = new Orders
             {
-                FirstName = name,
-                LastName = lastname,
-                PhoneNumber = phoneNumber,
-                DefaultLocationFk = location
+                UserIdfk = UserIDfk,
+                LocationsIdfk = LocationFK,
+                DateTimeOrder = DateTime.Now
             };
             _db.Add(useradd);
             _db.SaveChanges();
         }
 
-        public bool InventorySubStract(int location, List<int> toppins)
+        public int? GetOrderByUserId(int? findUserId)
         {
+            var Ordertab = GetOrdersTable();
+            var order = Ordertab.FirstOrDefault(i => i.UserIdfk == findUserId);
+            if (order == null)
+            {
+                return 0;
+            }
 
+            else
+            {
+                return order.OrderId;
+            }
+
+
+        }
+
+        public void Cheesepizza(int S, int thelocation, double cost, string Pizza, int OrderID)
+        {
+            if (S == 1)
+            {
+                toppins.Clear();
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(0);
+                InventorySubStract(S, thelocation, toppins,  cost, Pizza, OrderID);
+            }
+            else if (S == 2)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 3)
+            {
+                toppins.Clear();
+                toppins.Add(3);
+                toppins.Add(3);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(3);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+
+
+        }
+
+        public void Pepperoni(int S, int thelocation, double cost, string Pizza, int OrderID)
+        {
+            if (S == 1)
+            {
+                toppins.Clear();
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 2)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(0);
+                InventorySubStract(S, thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 3)
+            {
+                toppins.Clear();
+                toppins.Add(3);
+                toppins.Add(3);
+                toppins.Add(3);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(3);
+                toppins.Add(0);
+                InventorySubStract(S, thelocation, toppins, cost, Pizza, OrderID);
+            }
+
+
+        }
+
+        public void AllMeat(int S,  int thelocation, double cost, string Pizza, int OrderID)
+        {
+            if (S == 1)
+            {
+                toppins.Clear();
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(1);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 2)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(2);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 3)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(2);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+        }
+
+        public void Chorizo(int S, int thelocation, double cost, string Pizza, int OrderID)
+        {
+            if (S == 1)
+            {
+                toppins.Clear();
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(1);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 2)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(2);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 3)
+            {
+                toppins.Clear();
+                toppins.Add(3);
+                toppins.Add(3);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(3);
+                toppins.Add(3);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+        }
+
+        public void Bacon(int S,  int thelocation, double cost, string Pizza, int OrderID)
+        {
+            if (S == 1)
+            {
+                toppins.Clear();
+                toppins.Add(1);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(1);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 2)
+            {
+                toppins.Clear();
+                toppins.Add(2);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(2);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+            }
+            else if (S == 3)
+            {
+                toppins.Clear();
+                toppins.Add(3);
+                toppins.Add(3);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(3);
+                toppins.Add(0);
+                toppins.Add(0);
+                toppins.Add(3);
+                toppins.Add(0);
+                InventorySubStract(S,thelocation, toppins, cost, Pizza, OrderID);
+
+            }
+
+        }
+
+        public bool checkInv(int location)
+        {
             var LocInventory = _db.Locations.FirstOrDefault(g => g.LocationsId == location);
             if (LocInventory == null)
             {
                 return false;
-                // Console.WriteLine("Problem substracting from inventory on: " + LocInventory);
             }
             else if (LocInventory.Doug < 3)
             {
-                // Console.WriteLine("No enough material for pizza " + LocInventory.Locations1);
-                //Console.ReadLine();
-                //  Environment.Exit(0);
                 return false;
+            }
+            return true;
+        }
+
+        public bool InventorySubStract(int S,int location, List<int> toppins, double cost, string Pizza, int OrderID)
+        {
+            string sis;
+            if(S == 1)
+            {
+                sis = "Small";
+            }
+            else if(S ==2)
+            {
+                sis = "Medium";
             }
             else
             {
+                sis = "Large";
+            }
+            var LocInventory = _db.Locations.FirstOrDefault(g => g.LocationsId == location);
+
                 LocInventory.Doug = LocInventory.Doug - toppins[0];
                 LocInventory.Cheese = LocInventory.Cheese - toppins[1];
                 LocInventory.Pepperoni = LocInventory.Pepperoni - toppins[2];
@@ -127,19 +365,21 @@ namespace PizzaPalace.Library
                 LocInventory.Chorizo = LocInventory.Chorizo - toppins[8];
 
                 _db.Entry(_db.Locations.FirstOrDefault(g => g.LocationsId == location)).CurrentValues.SetValues(LocInventory);
+                 Addpizza(Pizza, sis, cost, toppins, OrderID);
                 _db.SaveChanges();
                 return true;
-                //Console.WriteLine("Store Inventory  DB change");
-            }
+            
         }
 
-        public void Addpizza(string pizza, string size, List<int> toppins)
+        public void Addpizza(string pizza, string size,double Cost, List<int> toppins, int OrderID)
         {
 
             var Pizzaadd = new Pizza
             {
                 Pizza1 = pizza,
                 Size = size,
+                Cost = Cost,
+                OrdersIdfk = OrderID,
                 Doug = toppins[0],
                 Cheese = toppins[1],
                 Pepperoni = toppins[2],
@@ -152,7 +392,6 @@ namespace PizzaPalace.Library
             };
             _db.Add(Pizzaadd);
             _db.SaveChanges();
-            Console.WriteLine("Pizza added to DB");
         }
 
         public void SaveChanges()
@@ -241,21 +480,6 @@ namespace PizzaPalace.Library
             return loc;
         }
 
-        //public IEnumerable<UserModel> GetUser(string UserToGet = null)
-        //{
-            
-        //    if (UserToGet == null)
-        //    {
-                
-        //        //return Mapper.Map(_db.Users.FirstOrDefault(g => g.FirstName == UserToGet));
-
-        //    }
-        //    else
-        //    {
-
-        //      //  return Mapper.Map(_db.Users.FirstOrDefault(g => g.FirstName == UserToGet));
-        //    }
-        //}
 
         // cheaper 
         public IEnumerable<Pizza> GetLocationOrdersByCheapest(int location_id)

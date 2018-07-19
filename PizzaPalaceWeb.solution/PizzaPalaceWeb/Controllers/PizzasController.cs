@@ -6,24 +6,59 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PizzaPalace.Data;
+using PizzaPalace.Library;
 
 namespace PizzaPalaceWeb.Controllers
 {
     public class PizzasController : Controller
     {
         private readonly PizzaPalacedbContext _context;
+        public UserRepository Repo { get; }
 
-        public PizzasController(PizzaPalacedbContext context)
+        public PizzasController(PizzaPalacedbContext context, UserRepository repo)
         {
             _context = context;
+            Repo = repo;
         }
 
-        // GET: Pizzas
-        public async Task<IActionResult> Index()
+        public ActionResult Index(string sortOrder)
         {
-            var pizzaPalacedbContext = _context.Pizza.Include(p => p.OrdersIdfkNavigation);
-            return View(await pizzaPalacedbContext.ToListAsync());
+            //ViewBag.LocSortParm = String.IsNullOrEmpty(sortOrder) ? "Location_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Cost" ? "Cost_desc" : "Cost";
+            ViewBag.Pizzas = sortOrder == "Pizza" ? "Pizza_desc" : "Pizza";
+            var Oder = from s in Repo.GetPizza()
+                       select s;
+
+            switch (sortOrder)
+            {
+                case "Cost":
+                    Oder = Oder.OrderBy(s => s.Cost);
+                    break;
+                case "Cost_desc":
+                    Oder = Oder.OrderByDescending(s => s.Cost);
+                    break;
+                case "Pizza":
+                    Oder = Oder.OrderBy(s => s.Pizza1);
+                    break;
+                case "Pizza_desc":
+                    Oder = Oder.OrderByDescending(s => s.Pizza1);
+                    break;
+                default:
+                    Oder = Oder.OrderBy(s => s.Cost);
+                    break;
+
+            }
+            return View(Oder.ToList());
+
         }
+
+
+        // GET: Pizzas
+        //public async Task<IActionResult> Index()
+        //{
+        //    var pizzaPalacedbContext = _context.Pizza.Include(p => p.OrdersIdfkNavigation);
+        //    return View(await pizzaPalacedbContext.ToListAsync());
+        //}
 
         // GET: Pizzas/Details/5
         public async Task<IActionResult> Details(int? id)

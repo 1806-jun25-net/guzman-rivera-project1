@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>All Pizzas</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Pizza1)
+                @Html.ActionLink("Pizzas", "Index", new { sortOrder = ViewBag.Pizzas })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Size)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cost)
+                @Html.ActionLink("Cost", "Index", new { sortOrder = ViewBag.DateSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Doug)
@@ -92,14 +92,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Chorizo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrdersIdfkNavigation.OrderId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PizzaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PizzaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PizzaId">Delete</a>
             </td>
         </tr>
 }

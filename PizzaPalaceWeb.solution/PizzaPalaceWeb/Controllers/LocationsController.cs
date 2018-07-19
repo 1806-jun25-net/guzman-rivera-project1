@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,21 +24,29 @@ namespace PizzaPalaceWeb.Controllers
         }
 
         // GET
-        public IActionResult ChooseALocation(Users user)
+        public ActionResult TheLocation(Users user)
         {
             LocationM location = new LocationM();
             return View(location);
         }
 
-        // Post
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ChooseALocation(LocationM location, Users user)
+        [AutoValidateAntiforgeryToken]
+        public ActionResult TheLocation(LocationM location, Users user, IFormCollection loc)
         {
-            var select = location.LocationsId;
-            user.DefaultLocationFk = select;
+            var selected = location.LocationsId;
+            // var selected = loc["LocationId"];
+            location.LocationsId = int.Parse(loc["SL"]);
+            TempData["locationid"] = location.LocationsId;
 
-            return RedirectToAction("PlaceAnOrder", "Orders", user);
+            //user.DefaultLocationFk = location.LocationsId;
+            //TempData["msg"] = "user id " + user.UsersId + "name " + user.FirstName;
+            // TempData["name"] = "user name " + user.FirstName + "last name " + user.FirstName;
+
+
+            return RedirectToAction("OrderSubmit", "Orders", user);
+
+
         }
 
 

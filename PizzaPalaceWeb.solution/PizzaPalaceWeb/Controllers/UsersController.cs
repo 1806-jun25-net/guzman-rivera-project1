@@ -19,7 +19,7 @@ namespace PizzaPalaceWeb.Controllers
         public UserRepository Repo { get; }
         public SelectListItem SelectedSize { get; set; }
         public string sort;
-
+        public bool isUser = false;
 
         public UsersController(PizzaPalacedbContext context, UserRepository repo)
         {
@@ -69,7 +69,7 @@ namespace PizzaPalaceWeb.Controllers
                 Repo.SaveChanges();
             }
 
-            return RedirectToAction("ChooseALocation", "Locations", user);
+            return RedirectToAction("TheLocation", "Locations", user);
             // return View(user);
         }
 
@@ -116,8 +116,7 @@ namespace PizzaPalaceWeb.Controllers
             ////////////////////////////////////////////////////////////////////////////////////////
             var Loc = SelectedSize.Value;
             var Location = Int32.Parse(Loc);
-
-            var repo = new UserRepository(new PizzaPalacedbContext(optionsBuilder.Options));
+            
             var LocationsSearch = Repo.GetLocation();// get all locat
             var location = LocationsSearch.FirstOrDefault(q => q.LocationsId == Location);// the location
             var won = Repo.GetOrdersTable(); // Get all Order
@@ -198,8 +197,7 @@ namespace PizzaPalaceWeb.Controllers
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaPalacedb"));
             ////////////////////////////////////////////////////////////////////////////////////////
 
-
-            var repo = new UserRepository(new PizzaPalacedbContext(optionsBuilder.Options));
+            
             var users = Repo.GetUsertable(); // Get all user
             var userorder = users.FirstOrDefault(g => g.FirstName == user.FirstName); // searching user
             var userID = user.Id; // user ID
@@ -221,13 +219,13 @@ namespace PizzaPalaceWeb.Controllers
 
         public IActionResult LogIN()
         {
-            Users user = new Users();
+            UsersModel user = new UsersModel();
             return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogIN(Users user)
+        public ActionResult LogIN(UsersModel user)
         {
             ////////////////////////////////////////////////////////////////////////////////////////
             var builder = new ConfigurationBuilder()
@@ -239,26 +237,73 @@ namespace PizzaPalaceWeb.Controllers
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaPalacedb"));
             ////////////////////////////////////////////////////////////////////////////////////////
 
-            
             var repo = new UserRepository(new PizzaPalacedbContext(optionsBuilder.Options));
             var use = repo.GetUsertable();
-            var ELUSER = use.FirstOrDefault(e => e.FirstName == user.FirstName && e.PhoneNumber == user.PhoneNumber);
-            if(ELUSER == null)
-            {
-                TempData["Error"] = "User not found.";
-                ///////redirecting//////////////////////////////////////////////////////////ergergergergerg3w4gt345hyw4ethw345hetrg3e5g35rg3e
-            }
-            Users TheUserFound = new Users
-            {
-                Id = ELUSER.Id,
-                FirstName = ELUSER.FirstName,
-                LastName = ELUSER.LastName,
-                PhoneNumber = ELUSER.PhoneNumber,
-                DefaultLocationFk = ELUSER.DefaultLocationFk
-            };
-            return View();
-           
 
+            TempData["firstname"] = user.FirstName;
+            TempData["lastname"] = user.LastName;
+            TempData["phone"] = user.PhoneNumber;
+            TempData["Count"] = 1;// counter for numbers pizza increments in the ordersController
+            TempData["order_total"] = 0;
+
+            foreach (var oneUser in use)
+            {
+                if (oneUser.FirstName == user.FirstName && oneUser.PhoneNumber == user.PhoneNumber)
+                {
+                    user.Id = oneUser.Id;
+                    TempData["userid"] = user.Id;
+                    isUser = true;
+                    break;
+                }
+
+            }
+
+            if (isUser == true)
+            {
+                TempData["welcomemsg"] = "Welcome back" + user.FirstName;
+
+            }
+            else if (isUser == false)
+            {
+                TempData["welcomemsg"] = "Welcome " + user.FirstName;
+
+                //create new user
+                Repo.AddUser(user.FirstName, user.LastName, user.PhoneNumber, 1);
+                Repo.SaveChanges();
+
+
+                TempData["userid"] = Repo.GetUserIDByPhone(user.FirstName, user.PhoneNumber);
+            }
+
+            //if (ELUSER == null)
+            //{
+            //    Repo.AddUser(user.FirstName, user.LastName, user.PhoneNumber, 1);
+            //    ////
+            //    return View();
+            //}
+            //else if(ELUSER != null) 
+            //    {
+
+            //    //Users TheUserFound = new Users
+            //    //{
+            //    //    Id = ELUSER.Id,
+            //    //    FirstName = ELUSER.FirstName,
+            //    //    LastName = ELUSER.LastName,
+            //    //    PhoneNumber = ELUSER.PhoneNumber,
+            //    //    DefaultLocationFk = ELUSER.DefaultLocationFk
+            //    //};
+            //    return RedirectToAction("PizzaOrder",  new
+            //    {
+
+            //        ID = ELUSER.Id,
+            //        FirstName = ELUSER.FirstName,
+            //        LastName = ELUSER.LastName,
+            //        PhoneNumber = ELUSER.PhoneNumber,
+            //        DefaultLocationFk = ELUSER.DefaultLocationFk
+            //    });
+
+            //}
+            return RedirectToAction("TheLocation", "Locations", user);
             //TempData["id"] = ELUSER.Id;
             //TempData["name"] = ELUSER.FirstName;
             //TempData["last"] = ELUSER.LastName;

@@ -20,13 +20,7 @@ namespace PizzaPalace.Data
         public virtual DbSet<Pizza> Pizza { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
 
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

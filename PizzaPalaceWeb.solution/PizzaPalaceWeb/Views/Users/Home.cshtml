@@ -32,13 +32,12 @@
 <body>
     <h1 align="center" style="color: white">Pizza Palace</h1>
 
-
     <table class="table" style="border: double; background-color: white">
         <thead>
             <tr>
                 <th style="display: flex">
                     <div class="form-group">
-                        <h4>X) Get Pizza</h4>
+                        <h4> Get Pizza</h4>
                         <button type="submit" class="btn btn-default "><a style="color: black" href="LogIN">SELECT</a></button>
                     </div>
 
@@ -95,6 +94,14 @@
             </tr>
             <tr>
                 <th>
+                    <h4> All Pizzas</h4>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default "><a style="color: black" asp-area="" asp-controller="Pizzas" asp-action="Index">SELECT</a></button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>
                     <h4> User/Order/Pizzas Relations</h4>
                     <div class="form-group">
                         <button type="submit" class="btn btn-default "><a style="color: black" asp-area="" asp-controller="PizzaOrder" asp-action="Index">SELECT</a></button>
@@ -102,9 +109,9 @@
                 </th>
             </tr>
             @*<th>
-                    @Html.DisplayNameFor(model => model.DefaultLocationFkNavigation)
-                </th>
-                <th></th>*@
+            @Html.DisplayNameFor(model => model.DefaultLocationFkNavigation)
+        </th>
+        <th></th>*@
             </tr>
         </thead>
     </table>

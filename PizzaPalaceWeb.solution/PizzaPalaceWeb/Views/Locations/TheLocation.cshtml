@@ -1,0 +1,27 @@
+﻿@model PizzaPalaceWeb.Models.LocationM
+@{
+    ViewData["Title"] = "TheLocation";
+}
+
+<h2>Choose The Location</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="TheLocation" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LocationsId" />
+            <div class="form-group">
+                @Html.DropDownListFor(x=>x.SL, new List<SelectListItem>
+                {
+                      new SelectListItem() {Text = "Pizza Palace!", Value="1"},
+                      new SelectListItem() {Text = "Angelitos Pizza", Value="2"},
+                      new SelectListItem() {Text = "Belitos Pizza", Value="3"},
+
+                }, "Select Location")
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Continue" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

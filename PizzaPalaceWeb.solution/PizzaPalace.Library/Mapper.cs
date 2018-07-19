@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PizzaPalace.Library.Models
 {
-    class Mapper
+    static class Mapper
     {
         public static UserModel Map(Data.Users usuario) => new UserModel
         {

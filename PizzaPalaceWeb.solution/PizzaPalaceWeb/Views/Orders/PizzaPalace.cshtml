@@ -18,9 +18,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.LocationsIdfk)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserIdfk)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -34,12 +31,7 @@
                 @Html.DisplayFor(modelItem => item.LocationsIdfkNavigation.LocationsId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserIdfkNavigation.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
             </td>
         </tr>
 }

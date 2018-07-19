@@ -72,9 +72,16 @@ namespace PizzaPalaceWeb.Controllers
 
         }
 
-        public IActionResult SuggestedOrder()
+        public IActionResult SuggestedOrder(int ID, string FirstName, string LastName, string PhoneNumber, int? DefaultLocationFk)
         {
-            Users user = new Users();
+            Users user = new Users
+            {
+                Id = ID,
+                FirstName = FirstName,
+                LastName = LastName,
+                PhoneNumber = PhoneNumber,
+                DefaultLocationFk = DefaultLocationFk
+            };
             return View(user);
         }
 
@@ -87,22 +94,20 @@ namespace PizzaPalaceWeb.Controllers
             var userorder2 = users.FirstOrDefault(g => g.FirstName == user.FirstName && g.LastName == user.LastName && g.PhoneNumber == user.PhoneNumber); // select user
             if (userorder2 == null)
             {
-                TempData["Error"] = "Error: Order not found";
+                ModelState.AddModelError("", "Error: Order not found");
                 return View();
             }
-            var userorder = users.Where(g => g.FirstName == user.FirstName && g.LastName == user.LastName && g.PhoneNumber == user.PhoneNumber); // searching user
-            var userID = userorder2.Id; // user ID
-            var won = Repo.GetOrdersTable(); // Get all Order
-            var order = won.Where(q => q.UserIdfk == userID); // All user order
-            var pizzas = Repo.GetPizza(); // Get all Pizza
-            var PizzasUser = pizzas.Where(q => q.OrdersIdfk == userID); // pizza of order
-            
-            var lastorder = won.LastOrDefault(q => q.UserIdfk == userID); // last order
-            var lastPizzasUser = pizzas.LastOrDefault(q => q.OrdersIdfk == lastorder.OrderId); // last pizza of order
-
-
-            
-           
+            else if(userorder2 != null)
+            {
+                var userorder = users.Where(g => g.FirstName == user.FirstName && g.LastName == user.LastName && g.PhoneNumber == user.PhoneNumber); // searching user
+                var userID = userorder2.Id; // user ID
+                var won = Repo.GetOrdersTable(); // Get all Order
+                var order = won.Where(q => q.UserIdfk == userID); // All user order
+                var pizzas = Repo.GetPizza(); // Get all Pizza
+                var PizzasUser = pizzas.Where(q => q.OrdersIdfk == userID); // pizza of order
+                var lastorder = won.LastOrDefault(q => q.UserIdfk == userID); // last order
+                var lastPizzasUser = pizzas.LastOrDefault(q => q.OrdersIdfk == lastorder.OrderId); // last pizza of order
+                
                 PizzaOrders OTPT = new PizzaOrders
                 {
                     OT = order,
@@ -112,9 +117,9 @@ namespace PizzaPalaceWeb.Controllers
 
                 ViewData["lastorder"] = lastorder;
                 ViewData["lastPizzasUser"] = lastPizzasUser;
-                return View(OTPT);
-            
-
+                return View();
+            }
+            return View();
         }
     }
 }

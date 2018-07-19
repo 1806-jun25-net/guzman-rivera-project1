@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,5 +20,8 @@ namespace PizzaPalaceWeb.Models
         public int? Chiken { get; set; }
         public int? Sauce { get; set; }
         public int? Chorizo { get; set; }
+
+        [Required]
+        public SelectListItem SL { get; set;}
     }
 }

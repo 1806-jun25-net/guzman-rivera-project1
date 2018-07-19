@@ -1,15 +1,7 @@
 ﻿@model PizzaOrders
 @using PizzaPalace.Data;
 
-@{
-    ViewData["Title"] = "SuggestedOrder";
-    var pizzas = (Pizza)ViewData["lastPizzasUser"];
-}
 
-<h2>Main Menu</h2>
-<h1>@pizzas.Size;</h1>
-<h1>@pizzas.Pizza1;</h1>
-<h1>@pizzas.Cost;</h1>
 @foreach (Users item in Model.UT)
 {
     <h3>
@@ -22,18 +14,26 @@
     <h4>Pizza Orders</h4>
 
     <dl class="dl-horizontal">
+        @{
 
-        @foreach (Orders item2 in Model.OT)
-        {
-            <dt>
-                Date
-            </dt>
-            <dd>
-                @item2.DateTimeOrder
-            </dd>
-
-
+            var order = (Orders)ViewData["lastorder"];
+            var pizzas = (Pizza)ViewData["lastPizzasUser"];
         }
+
+        <table class="table">
+            <tr>
+                <th>Size</th>
+                <th>Pizza</th>
+                <th>Cost $</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <td>@pizzas.Size;</td>
+                <td>@pizzas.Pizza1;</td>
+                <td>@pizzas.Cost;</td>
+                <td>@order.DateTimeOrder</td>
+            </tr>
+        </table>
 
 
         @*<dd>

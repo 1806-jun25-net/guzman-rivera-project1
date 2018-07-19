@@ -19,7 +19,7 @@ namespace PizzaPalace.Data
         public Locations LocationsIdfkNavigation { get; set; }
         public Users UserIdfkNavigation { get; set; }
         public ICollection<Pizza> Pizza { get; set; }
-        //public SelectListItem SelectedSize { get; set; }
+       
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -34,105 +35,138 @@ namespace PizzaPalaceWeb.Controllers
         }
 
         //Get: placeAnOrder
-        public IActionResult PlaceAnOrder()
+        public IActionResult OrderSubmit()
         {
-            PizzaM pizza = new PizzaM();
-            OrderM order = new OrderM();
+            //PizzaM pizza = new PizzaM();
+            //OrderM order = new OrderM();
             //OrdersPizzaModel orderPizza = new OrdersPizzaModel();
 
-            return ViewBag(pizza, order);
+            return View();
         }
 
         // Post: PlaceAnOrder
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult PlaceAnOrder(PizzaM pizza, OrderM order, Users user)
+        public ActionResult OrderSubmit(IFormCollection VC, Users user)
         {
-            ModeloGeneral myModel = new ModeloGeneral();
 
-            pizza.Pizza1 = myModel.SelectTopping.Value;
-            pizza.Size = myModel.SelectSize.Value;
+            int UseridTD = int.Parse(TempData.Peek("userid").ToString());
+            int LocationTD = int.Parse(TempData.Peek("locationid").ToString());
+            string NameTD = TempData.Peek("firstname").ToString();
+            string LastnameTD = TempData.Peek("lastname").ToString();
+            string PhoneTD = TempData.Peek("phone").ToString();
 
-            // Sets the values
-            order.OrderId = user.Id;
-            order.LocationsIdfk = user.DefaultLocationFk;
-            pizza.Cost = Total;
-
-
-            if (Count <= 12)
+            if (Count == 12)
             {
-
-
-                // Calculates the total
-                if (pizza.Size == "small")
-                {
-                    pizza.Cost = 5;
-                    Total = Total += 5;
-                }
-                else if (pizza.Size == "medium")
-                {
-                    pizza.Cost = 10;
-                    Total = Total += 10;
-                }
-                else if (pizza.Size == "large")
-                {
-                    pizza.Cost = 16;
-                    Total = Total += 16;
-                }
-
-                int price = int.Parse(pizza.Cost.ToString());
-                toppins.Clear();
-                toppins.Add(1);
-                toppins.Add(1);
-                toppins.Add(0);
-                toppins.Add(0);
-                toppins.Add(0);
-                toppins.Add(0);
-                toppins.Add(0);
-                toppins.Add(1);
-                toppins.Add(0);
-                // Checks if there are enough resourses
-                bool checkInventory = Repo.InventorySubStract(1, toppins); // toppins
-
-
-
-                if (checkInventory == true)
-                {
-
-                    // Add new pizza
-                    Repo.Addpizza(pizza.Pizza1, pizza.Size, toppins);// toppins
-
-                    // For creating just an order for every pizza
-                    if (Count < 1)
-                    {
-                        // Add New Order
-                        Repo.SubmitOrder(user.FirstName, user.LastName, user.PhoneNumber, 1);
-
-                    }
-                    Count++;
-
-
-
-                    // Search for the pizza and order Id
-
-
-                    return RedirectToAction("PlaceAnOrder");
-                }
-                // if there are no more toppings for the pizza's
-                else
-                {
-                    ViewData["message"] = "Not Enough resourses to create a pizza, please try again later.";
-                    return RedirectToAction("PlaceAnOrder");
-                }
+                ViewData["msg"] = "You can't order more than 12 Pizzas :( ";
+                return RedirectToAction(nameof(OrderSubmit));
             }
-            // If the user wants to order more than 12 pizza's 
+
+            string SelectedPizza = VC["SP"];
+            int SelectedSize = int.Parse(VC["SS"]);
+            //ModeloGeneral myModel = new ModeloGeneral();
+            double cost;
+            double ELTOTAL;
+            //pizza.Pizza1 = myModel.SelectTopping.Value;
+            //pizza.Size = myModel.SelectSize.Value;
+
+            //// Sets the values
+            //order.OrderId = user.Id;
+            //order.LocationsIdfk = user.DefaultLocationFk;
+            //pizza.Cost = Total;
+
+            if (SelectedSize == 1)
+            {
+                cost = 6;
+
+                ELTOTAL = int.Parse(TempData.Peek("order_total").ToString());
+                ELTOTAL += 6;
+                TempData["order_total"] = ELTOTAL;
+            }
+            else if (SelectedSize == 2)
+            {
+                cost = 12;
+                ELTOTAL = int.Parse(TempData.Peek("order_total").ToString());
+                ELTOTAL += 12;
+                TempData["order_total"] = ELTOTAL;
+
+            }
             else
             {
-                ViewData["message"] = "You exceded order limit, you can only order 12 pizzas max. Place your order and try again.";
-                return RedirectToAction("PlaceAnOrder");
+                cost = 17;
+                ELTOTAL = int.Parse(TempData.Peek("order_total").ToString());
+                ELTOTAL += 17;
+                TempData["order_total"] = ELTOTAL;
+
             }
 
+
+            //check availability of ingredients for each pizza
+            bool availability = Repo.checkInv(LocationTD);
+            
+            if (availability == true)
+            {
+                // take out toppings from db
+
+                //add pizza
+                
+                if (TempData.Peek("Count").ToString() == "1")
+                {
+                    Count = 1;
+
+                }
+                else
+                {
+                    Count = int.Parse(TempData.Peek("Count").ToString());
+                }
+
+
+                if (Count < 2)//only if the order is new is going to be created
+                {
+                    Repo.SubmitOrder(UseridTD, LocationTD);
+
+                    /////////////////////////////////////////////////////////////////////////////Repo.SubmitOrder(UseridTD, LocationTD, Order_total);
+
+                }
+                int? OrderIDs = Repo.GetOrderByUserId(UseridTD);
+
+                //increment counter to know next time, that this is not a new order.
+                if (SelectedPizza == "Cheese")
+                {
+                    Repo.Cheesepizza(SelectedSize, LocationTD, cost, SelectedPizza, UseridTD);
+                }
+                if (SelectedPizza == "Pepperoni")
+                {
+                    Repo.Pepperoni(SelectedSize, LocationTD, cost, SelectedPizza, UseridTD);
+                }
+                if (SelectedPizza == "Allmeat")
+                {
+                    Repo.AllMeat(SelectedSize, LocationTD, cost, SelectedPizza, UseridTD);
+                }
+                if (SelectedPizza == "Chorizo")
+                {
+                    Repo.Chorizo(SelectedSize, LocationTD, cost, SelectedPizza, UseridTD);
+                }
+                if (SelectedPizza == "Bacon")
+                {
+                    Repo.Bacon(SelectedSize, LocationTD, cost, SelectedPizza, UseridTD);
+                }
+                Repo.SaveChanges();
+                Count++;
+                TempData["Count"] = Count;
+                return RedirectToAction(nameof(OrderSubmit));
+                
+            }
+            else
+            {
+                ViewData["msg"] = "Not enough reseources to complete your order, Please choose again...";
+                return RedirectToAction(nameof(OrderSubmit));
+            }
+
+
         }
+
+
 
         public ActionResult PizzaPalace(Orders order)
         {
@@ -163,38 +197,42 @@ namespace PizzaPalaceWeb.Controllers
         }
 
 
-        
+
 
         public ActionResult Index(string sortOrder)
         {
-            //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Price" : "Price_desc";
-            ViewBag.PriceSortParm = sortOrder == "LocationsIdfk" ? "LocationsIdfk_desc" : "LocationsIdfk";
+            ViewBag.LocSortParm = String.IsNullOrEmpty(sortOrder) ? "Location_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
+            //ViewBag.User = sortOrder == "User" ? "User" : "User_desc";
             var Oder = from s in Repo.GetOrdersTable()
                        select s;
+
             switch (sortOrder)
             {
-                case "LocationsIdfk":
-                    Oder = Oder.OrderBy(s => s.LocationsIdfk);
-                    break;
-                case "LocationsIdfk_desc":
-                    Oder = Oder.OrderByDescending(s => s.LocationsIdfk);
-                    break;
                 case "Date":
                     Oder = Oder.OrderBy(s => s.DateTimeOrder);
                     break;
                 case "Date_desc":
                     Oder = Oder.OrderByDescending(s => s.DateTimeOrder);
                     break;
+                //case "Location_desc":
+                //    Oder = Oder.OrderByDescending(s => s.LocationsIdfk);
+                //    break;
+                //case "User":
+                //    Oder = Oder.OrderBy(s => s.UserIdfk);
+                //    break;
+                //case "User_desc":
+                //    Oder = Oder.OrderByDescending(s => s.UserIdfk);
+                //    break;
                 default:
-                    Oder = Oder.OrderBy(s => s.DateTimeOrder);
+                    Oder = Oder.OrderBy(s => s.LocationsIdfk);
                     break;
+
             }
             return View(Oder.ToList());
+
         }
-
-
-        //// GET: Orders
+        // GET: Orders
         //public async Task<IActionResult> Index()
         //{
         //    var pizzaPalacedbContext = _context.Orders.Include(o => o.LocationsIdfkNavigation).Include(o => o.UserIdfkNavigation);
@@ -269,19 +307,12 @@ namespace PizzaPalaceWeb.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
+            int orderid = int.Parse(TempData.Peek("orderid").ToString());
             var orders = await _context.Orders
                 .Include(o => o.LocationsIdfkNavigation)
                 .Include(o => o.UserIdfkNavigation)
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (orders == null)
-            {
-                return NotFound();
-            }
+                .FirstOrDefaultAsync(m => m.OrderId == orderid);
 
             return View(orders);
         }
